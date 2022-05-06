@@ -76,7 +76,6 @@
 		7000795E2828A0C6004088F8 /* InfraWeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfraWeatherInfo.swift; sourceTree = "<group>"; };
 		700079602828A39D004088F8 /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
 		700079622828A96D004088F8 /* WeatherInfoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoConverter.swift; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +279,23 @@
 				7000795E2828A0C6004088F8 /* InfraWeatherInfo.swift */,
 			);
 			path = InfraObject;
+			sourceTree = "<group>";
+		};
+		7000795828250D91004088F8 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				7000795928250D98004088F8 /* Generator */,
+				7000794E2824F112004088F8 /* Converter */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		7000795928250D98004088F8 /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				7000795A28250DA4004088F8 /* ErrorAlertGenerator.swift */,
+			);
+			path = Generator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
