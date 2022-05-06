@@ -76,6 +76,7 @@
 		7000795E2828A0C6004088F8 /* InfraWeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfraWeatherInfo.swift; sourceTree = "<group>"; };
 		700079602828A39D004088F8 /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
 		700079622828A96D004088F8 /* WeatherInfoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoConverter.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
