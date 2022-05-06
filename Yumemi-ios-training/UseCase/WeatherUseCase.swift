@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol WeatherUseCaseOutput: NSObjectProtocol {
+protocol WeatherUseCaseOutput: AnyObject {
     
 }
 
@@ -16,7 +16,7 @@ protocol WeatherUseCaseProtocol {
     func fetchWeather() -> Weather
 }
 
-class WeatherUseCase: WeatherUseCaseProtocol {
+final class WeatherUseCase: WeatherUseCaseProtocol {
     private weak var output: WeatherUseCaseOutput?
     private let weatherRepository: WeatherRepositoryProtocol
     

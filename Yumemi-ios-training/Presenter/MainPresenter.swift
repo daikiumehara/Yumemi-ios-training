@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol MainPresenterProtocol {
+protocol MainPresenterProtocol: AnyObject {
     func onTapResetButton()
     func onTapReloadButton()
 }
 
-class MainPresenter: NSObject, MainPresenterProtocol {
+final class MainPresenter: MainPresenterProtocol {
     private weak var view: MainViewProtocol?
     private let weatherUseCase: WeatherUseCaseProtocol
     

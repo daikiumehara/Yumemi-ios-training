@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Environment {
+final struct Environment {
     //MARK: - Presenter
     static func makeMainPresenter(view: MainViewProtocol) -> MainPresenterProtocol {
         let useCase = self.makeWeatherUseCase()

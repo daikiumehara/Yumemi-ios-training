@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol WeatherRepositoryProtocol {
+protocol WeatherRepositoryProtocol: AnyObject {
     func fetchWeather() -> Weather
 }
 
-class WeatherRepository: WeatherRepositoryProtocol {
+final class WeatherRepository: WeatherRepositoryProtocol {
     func fetchWeather() -> Weather {
         return WeatherClient.fetchWeather()
     }

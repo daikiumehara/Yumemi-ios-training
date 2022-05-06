@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol MainViewProtocol: NSObjectProtocol {
+protocol MainViewProtocol: AnyObject {
     func changeWeather(data: WeatherData)
 }
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
     
     private var presenter: MainPresenterProtocol?
