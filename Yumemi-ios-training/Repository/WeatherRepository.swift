@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import YumemiWeather
 
 protocol WeatherRepositoryProtocol: AnyObject {
     func fetchWeather() -> Weather

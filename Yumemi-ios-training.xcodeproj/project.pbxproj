@@ -220,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				7000794C2824EE1D004088F8 /* WeatherData.swift */,
-				7000795428250416004088F8 /* YumemiWeatherError.swift */,
 				70007956282509F4004088F8 /* APIError.swift */,
 			);
 			path = Model;
