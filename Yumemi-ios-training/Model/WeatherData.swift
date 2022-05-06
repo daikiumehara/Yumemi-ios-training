@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Weather表示用のDataを保持する構造体
 struct WeatherData {
     let image: UIImage
     let color: UIColor
