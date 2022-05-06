@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum YumemiWeatherError: Error, Codable {
+enum YumemiWeatherError: String, Error, Codable {
     case invalidParameterError
     case unknownError
 }
