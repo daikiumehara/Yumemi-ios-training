@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct WeatehrData {
+struct WeatherData {
     let image: UIImage
     let color: UIColor
 }

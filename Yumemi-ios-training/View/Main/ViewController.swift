@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainViewProtocol: NSObjectProtocol {
-    func changeWeatherImage(image: UIImage)
+    func changeWeather(data: WeatherData)
 }
 
 class ViewController: UIViewController {
@@ -29,7 +29,8 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: MainViewProtocol {
-    func changeWeatherImage(image: UIImage) {
+    func changeWeather(data: WeatherData) {
+        let image = data.image.withTintColor(data.color)
         self.weatherImageView.image = image
     }
 }
