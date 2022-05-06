@@ -7,8 +7,14 @@
 
 import Foundation
 
+protocol WeatherUseCaseOutput: NSObjectProtocol {
+    func changeWeather(weather: Weather)
+    func happendError(error: String)
+}
+
 protocol WeatherUseCaseProtocol {
-    func fetchWeather() -> Weather
+    func setOutput(_ output: WeatherUseCaseOutput)
+    func fetchWeather()
 }
 
 final class WeatherUseCase: WeatherUseCaseProtocol {
@@ -18,7 +24,17 @@ final class WeatherUseCase: WeatherUseCaseProtocol {
         self.weatherRepository = weatherRepository
     }
     
-    func fetchWeather() -> Weather {
-        self.weatherRepository.fetchWeather()
+    func setOutput(_ output: WeatherUseCaseOutput) {
+        self.output = output
+    }
+    
+    func fetchWeather() {
+        let result = self.weatherRepository.fetchWeather(at: "tokyo")
+        switch result {
+        case .success(let weather):
+            self.output?.changeWeather(weather: weather)
+        case .failure(let error):
+            self.output?.happendError(error: error.text)
+        }
     }
 }

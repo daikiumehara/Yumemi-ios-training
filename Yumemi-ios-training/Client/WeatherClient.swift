@@ -13,4 +13,9 @@ struct WeatherClient {
         let weather = YumemiWeather.fetchWeather()
         return Weather.create(weather)
     }
+    
+    static func fetchWeather(at: String) throws -> Weather {
+        let weather = try YumemiWeather.fetchWeather(at: at)
+        return Weather(rawValue: weather)!
+    }
 }

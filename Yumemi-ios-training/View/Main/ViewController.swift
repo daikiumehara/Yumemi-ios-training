@@ -9,6 +9,7 @@ import UIKit
 
 protocol MainViewProtocol: AnyObject {
     func changeWeather(data: WeatherData)
+    func showErrorAlert(message: String)
 }
 
 final class ViewController: UIViewController {
@@ -31,6 +32,10 @@ final class ViewController: UIViewController {
 }
 
 extension ViewController: MainViewProtocol {
+    func showErrorAlert() {
+        
+    }
+    
     func changeWeather(data: WeatherData) {
         self.weatherImageView.image = data.image
     }
