@@ -13,11 +13,19 @@ protocol MainPresenterProtocol {
 }
 
 class MainPresenter: MainPresenterProtocol {
+    private weak var view: MainViewProtocol?
+    private let weatherUseCase: WeatherUseCaseProtocol
+    
+    init(view: MainViewProtocol,
+         weatherUseCase: WeatherUseCaseProtocol) {
+        self.view = view
+        self.weatherUseCase = weatherUseCase
+    }
+    
     func onTapResetButton() {
-        <#code#>
     }
     
     func onTapReloadButton() {
-        <#code#>
+        self.weatherUseCase.fetchWeather()
     }
 }

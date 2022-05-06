@@ -7,8 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol MainViewProtocol: NSObjectProtocol {
+    func changeWeatherImage(image: UIImage)
+}
 
+class ViewController: UIViewController {
+    @IBOutlet weak var weatherImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -20,6 +25,12 @@ class ViewController: UIViewController {
     
     @IBAction func onTapReloadButton(_ sender: Any) {
         
+    }
+}
+
+extension ViewController: MainViewProtocol {
+    func changeWeatherImage(image: UIImage) {
+        self.weatherImageView.image = image
     }
 }
 

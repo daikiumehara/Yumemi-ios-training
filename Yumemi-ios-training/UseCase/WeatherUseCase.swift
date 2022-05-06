@@ -7,10 +7,25 @@
 
 import Foundation
 
-protocol WeatherUseCaseProtocol {
+protocol WeatherUseCaseOutput: NSObjectProtocol {
     
 }
 
+protocol WeatherUseCaseProtocol {
+    func fetchWeather() -> Weather
+}
+
 class WeatherUseCase: WeatherUseCaseProtocol {
+    private weak var output: WeatherUseCaseOutput?
+    private let weatherRepository: WeatherRepositoryProtocol
     
+    init(output: WeatherUseCaseOutput,
+        weatherRepository: WeatherRepositoryProtocol) {
+        self.output = output
+        self.weatherRepository = weatherRepository
+    }
+    
+    func fetchWeather() -> Weather {
+        self.weatherRepository.fetchWeather()
+    }
 }
