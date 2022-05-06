@@ -14,9 +14,11 @@ protocol MainViewProtocol: NSObjectProtocol {
 class ViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
     
+    private var presenter: MainPresenterProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.presenter = Environment.makeMainPresenter(view: self)
     }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
@@ -24,7 +26,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onTapReloadButton(_ sender: Any) {
-        
+        self.presenter?.onTapReloadButton()
     }
 }
 

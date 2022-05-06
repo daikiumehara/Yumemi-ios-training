@@ -6,3 +6,24 @@
 //
 
 import Foundation
+
+struct Environment {
+    //MARK: - Presenter
+    static func makeMainPresenter(view: MainViewProtocol) -> MainPresenterProtocol {
+        let useCase = self.makeWeatherUseCase()
+        let presenter = MainPresenter(view: view,
+                                      weatherUseCase: useCase)
+        useCase.setOutput(presenter)
+        return presenter
+    }
+    
+    //MARK: - UseCase
+    private static func makeWeatherUseCase() -> WeatherUseCaseProtocol {
+        return WeatherUseCase(weatherRepository: self.makeWeatherRepository())
+    }
+    
+    //MARK: - Repository
+    private static func makeWeatherRepository() -> WeatherRepositoryProtocol {
+        return WeatherRepository()
+    }
+}

@@ -12,6 +12,7 @@ protocol WeatherUseCaseOutput: NSObjectProtocol {
 }
 
 protocol WeatherUseCaseProtocol {
+    func setOutput(_ output: WeatherUseCaseOutput)
     func fetchWeather() -> Weather
 }
 
@@ -19,10 +20,12 @@ class WeatherUseCase: WeatherUseCaseProtocol {
     private weak var output: WeatherUseCaseOutput?
     private let weatherRepository: WeatherRepositoryProtocol
     
-    init(output: WeatherUseCaseOutput,
-        weatherRepository: WeatherRepositoryProtocol) {
-        self.output = output
+    init(weatherRepository: WeatherRepositoryProtocol) {
         self.weatherRepository = weatherRepository
+    }
+    
+    func setOutput(_ output: WeatherUseCaseOutput) {
+        self.output = output
     }
     
     func fetchWeather() -> Weather {

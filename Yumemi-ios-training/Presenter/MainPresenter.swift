@@ -12,7 +12,7 @@ protocol MainPresenterProtocol {
     func onTapReloadButton()
 }
 
-class MainPresenter: MainPresenterProtocol {
+class MainPresenter: NSObject, MainPresenterProtocol {
     private weak var view: MainViewProtocol?
     private let weatherUseCase: WeatherUseCaseProtocol
     
@@ -29,4 +29,8 @@ class MainPresenter: MainPresenterProtocol {
         let weather = self.weatherUseCase.fetchWeather()
         self.view?.changeWeather(data: WeatherConverter.convert(weather: weather))
     }
+}
+
+extension MainPresenter: WeatherUseCaseOutput {
+    
 }
