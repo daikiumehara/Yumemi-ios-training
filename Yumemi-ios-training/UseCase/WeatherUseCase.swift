@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+protocol WeatherUseCaseProtocol {
+    
+}
+
+class WeatherUseCase: WeatherUseCaseProtocol {
+    
+}

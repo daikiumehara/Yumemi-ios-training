@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+protocol WeatherRepositoryProtocol {
+    func fetchWeather() -> Weather
+}
+
+class WeatherRepository: WeatherRepositoryProtocol {
+    func fetchWeather() -> Weather {
+        return WeatherClient.fetchWeather()
+    }
+}
