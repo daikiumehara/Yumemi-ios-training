@@ -32,8 +32,9 @@ final class ViewController: UIViewController {
 }
 
 extension ViewController: MainViewProtocol {
-    func showErrorAlert() {
-        
+    func showErrorAlert(message: String) {
+        let alert = ErrorAlertGenerator.geenrate(messsage: message)
+        self.present(alert, animated: true)
     }
     
     func changeWeather(data: WeatherData) {
