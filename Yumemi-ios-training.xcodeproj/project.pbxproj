@@ -349,6 +349,14 @@
 				7000796F2828DCE6004088F8 /* WeatherData.swift */,
 			);
 			path = UIModel;
+            sourceTree = "<group>";
+        };
+		7000795D2828A0AF004088F8 /* InfraObject */ = {
+			isa = PBXGroup;
+			children = (
+				7000795E2828A0C6004088F8 /* InfraWeatherInfo.swift */,
+			);
+			path = InfraObject;
 			sourceTree = "<group>";
 		};
 		70B0C8BC282B4AC9006EA7A2 /* Launch */ = {
