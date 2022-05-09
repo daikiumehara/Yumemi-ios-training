@@ -18,4 +18,9 @@ struct WeatherClient {
         let weather = try YumemiWeather.fetchWeather(at: area)
         return Weather(rawValue: weather)!
     }
+    
+    static func fetctWeather(jsonString: String) throws -> String {
+        let data = try YumemiWeather.fetchWeather(jsonString)
+        return data
+    }
 }
