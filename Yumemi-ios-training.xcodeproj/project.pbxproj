@@ -320,6 +320,23 @@
 			path = Generator;
 			sourceTree = "<group>";
 		};
+		700079692828DA8B004088F8 /* InfraObject */ = {
+			isa = PBXGroup;
+			children = (
+				7000796A2828DABB004088F8 /* InfraWeatherInfo.swift */,
+			);
+			path = InfraObject;
+			sourceTree = "<group>";
+		};
+		7000796E2828DCCE004088F8 /* UIModel */ = {
+			isa = PBXGroup;
+			children = (
+				7000794C2824EE1D004088F8 /* WeatherImageData.swift */,
+				7000796F2828DCE6004088F8 /* WeatherData.swift */,
+			);
+			path = UIModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
