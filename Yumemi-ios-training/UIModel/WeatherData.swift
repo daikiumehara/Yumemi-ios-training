@@ -12,7 +12,7 @@ struct WeatherData {
     let image: UIImage
     let color: UIColor
     
-    func create() -> UIImage {
+    var preconfiguredImage: UIImage {
         return image.withTintColor(color)
     }
 }
