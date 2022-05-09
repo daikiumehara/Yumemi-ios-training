@@ -284,6 +284,14 @@
 				7000796F2828DCE6004088F8 /* WeatherUIData.swift */,
 			);
 			path = UIModel;
+            sourceTree = "<group>";
+        };
+		7000795D2828A0AF004088F8 /* InfraObject */ = {
+			isa = PBXGroup;
+			children = (
+				7000795E2828A0C6004088F8 /* InfraWeatherInfo.swift */,
+			);
+			path = InfraObject;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,6 +441,8 @@
 				7000793C2824C44A004088F8 /* WeatherClient.swift in Sources */,
 				700079722828E0A7004088F8 /* WeatherUIDataConverter.swift in Sources */,
 				700079082824B678004088F8 /* AppDelegate.swift in Sources */,
+				700079612828A39D004088F8 /* WeatherInfo.swift in Sources */,
+				700079632828A96D004088F8 /* WeatherInfoConverter.swift in Sources */,
 				7000790A2824B678004088F8 /* SceneDelegate.swift in Sources */,
 				700079532824F985004088F8 /* DIContainer.swift in Sources */,
 				7000796D2828DBBA004088F8 /* WeatherInfoConverter.swift in Sources */,

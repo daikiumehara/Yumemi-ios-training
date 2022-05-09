@@ -20,3 +20,4 @@ enum Weather: String, Codable {
         return weather
     }
 }
+
