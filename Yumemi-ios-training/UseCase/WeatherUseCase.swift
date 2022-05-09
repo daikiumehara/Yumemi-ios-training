@@ -8,7 +8,7 @@
 import Foundation
 
 protocol WeatherUseCaseOutput: AnyObject {
-    func changeWeather(weather: Weather)
+    func changeWeather(weather: WeatherInfo)
     func happenedError(error: String)
 }
 
@@ -26,7 +26,9 @@ final class WeatherUseCase: WeatherUseCaseProtocol {
     }
     
     func fetchWeather() {
-        let result = self.weatherRepository.fetchWeather(area: "tokyo")
+        let params = SearchParameter(area: "tokyo",
+                                     date: "2020-04-01T12:00:00+09:00")
+        let result = self.weatherRepository.fetchWeather(params: params)
         switch result {
         case .success(let weather):
             self.output?.changeWeather(weather: weather)
