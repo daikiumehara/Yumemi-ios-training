@@ -11,6 +11,7 @@ enum APIError: Error {
     case unexpected
     case invalidParameter
     case unknown
+    case missEncode
     case missDecode
     case failedGetData
     
@@ -20,6 +21,7 @@ enum APIError: Error {
         case .invalidParameter: return "無効なパラメータが渡されました"
         case .unexpected: return "予想外のエラーが発生しました"
         case .missDecode: return "デコードに失敗しました"
+        case .missEncode: return "エンコードに失敗しました"
         case .failedGetData: return "値の取得に失敗しました"
         }
     }
