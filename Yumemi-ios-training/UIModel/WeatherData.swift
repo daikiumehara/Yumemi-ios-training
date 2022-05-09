@@ -2,12 +2,13 @@
 //  WeatherData.swift
 //  Yumemi-ios-training
 //
-//  Created by 梅原 奈輝 on 2022/05/06.
+//  Created by 梅原 奈輝 on 2022/05/09.
 //
 
-import UIKit
+import Foundation
 
-// Weather表示用のDataを保持する構造体
 struct WeatherData {
-    let image: UIImage
+    let imageData: WeatherImageData
+    let maxTemp: String
+    let minTemp: String
 }

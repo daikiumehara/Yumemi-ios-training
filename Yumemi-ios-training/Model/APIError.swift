@@ -20,7 +20,7 @@ enum APIError: Error {
         case .invalidParameter: return "無効なパラメータが渡されました"
         case .unknown: return "不明なエラーが発生しました"
         case .missDecode: return "デコードに失敗しました"
-        case .failedGetData: return "データの取得に失敗しました"
+        case .failedGetData: return "値の取得に失敗しました"
         }
     }
 }

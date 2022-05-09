@@ -8,17 +8,17 @@
 import UIKit
 
 struct WeatherConverter {
-    static func convert(weather: Weather) -> WeatherData {
+    static func convert(weather: Weather) -> WeatherImageData {
         switch weather {
         case.sunny:
-            return WeatherData(image: #imageLiteral(resourceName: "sunny").withTintColor(.red))
+            return WeatherImageData(image: #imageLiteral(resourceName: "sunny").withTintColor(.red))
         case .cloudy:
-            return WeatherData(image: #imageLiteral(resourceName: "cloudy").withTintColor(.gray))
+            return WeatherImageData(image: #imageLiteral(resourceName: "cloudy").withTintColor(.gray))
         case .rainy:
-            return WeatherData(image: #imageLiteral(resourceName: "rainy").withTintColor(.blue))
+            return WeatherImageData(image: #imageLiteral(resourceName: "rainy").withTintColor(.blue))
         case .none:
             // 画像がないので一旦sunnyのgrayを返す
-            return WeatherData(image: #imageLiteral(resourceName: "sunny").withTintColor(.gray))
+            return WeatherImageData(image: #imageLiteral(resourceName: "sunny").withTintColor(.gray))
         }
     }
 }

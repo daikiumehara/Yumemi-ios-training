@@ -24,28 +24,26 @@ final class WeatherRepository: WeatherRepositoryProtocol {
             let weather = try WeatherClient.fetchWeather(area: area)
             return .success(weather)
         } catch {
-            let error = self.convertError(error: error)
-            return .failure(error)
+            let apiError = self.convertError(error: error)
+            return .failure(apiError)
         }
     }
     
     func fetchWeather(jsonString: String) -> Result<WeatherInfo, APIError> {
         do {
-            guard let data = try WeatherClient.fetctWeather(jsonString: jsonString)
-                .data(using: .utf8) else {
+            guard let data = try WeatherClient.fetchWeather(jsonString: jsonString).data(using: .utf8) else {
                 return .failure(.failedGetData)
             }
-            
             do {
-                let info = try JSONDecoder().decode(InfraWeatherInfo.self, from: data)
+                let info = try JSONDecoder().decode(InfraWeatherInfo.self,
+                                                    from: data)
                 return .success(WeatherInfoConverter.convert(data: info))
             } catch {
                 return .failure(.missDecode)
             }
-            
         } catch {
-            let error = self.convertError(error: error)
-            return .failure(error)
+            let apiError = self.convertError(error: error)
+            return .failure(apiError)
         }
     }
     

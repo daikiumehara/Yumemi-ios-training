@@ -14,6 +14,8 @@ protocol MainViewProtocol: AnyObject {
 
 final class ViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var minTempLabel: UILabel!
     
     private var presenter: MainPresenterProtocol?
     
@@ -38,7 +40,9 @@ extension ViewController: MainViewProtocol {
     }
     
     func changeWeather(data: WeatherData) {
-        self.weatherImageView.image = data.image
+        self.weatherImageView.image = data.imageData.image
+        self.maxTempLabel.text = data.maxTemp
+        self.minTempLabel.text = data.minTemp
     }
 }
 
