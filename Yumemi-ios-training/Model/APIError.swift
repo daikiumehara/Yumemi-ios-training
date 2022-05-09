@@ -22,6 +22,7 @@ enum APIError: Error {
         case .unknown: return "不明なエラーが発生しました"
         case .missEncode: return "エンコードに失敗しました"
         case .missDecode: return "デコードに失敗しました"
+        case .missEncode: return "エンコードに失敗しました"
         case .failedGetData: return "値の取得に失敗しました"
         }
     }
