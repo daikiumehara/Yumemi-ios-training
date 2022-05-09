@@ -12,6 +12,5 @@ struct WeatherConverter {
         return WeatherData(imageData: WeatherImageConverter.convert(weather: data.weather),
                            maxTemp: data.maxTemp.description,
                            minTemp: data.minTemp.description)
-
     }
 }
