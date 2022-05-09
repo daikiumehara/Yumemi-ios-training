@@ -120,7 +120,6 @@
 				7000795C28252512004088F8 /* UIModel */,
 				700079512824F8BE004088F8 /* Environment */,
 				7000794E2824F112004088F8 /* Converter */,
-				7000794B2824EDA4004088F8 /* Model */,
 				700079462824E635004088F8 /* UseCase */,
 				700079452824E5CF004088F8 /* Repository */,
 				700079422824E3A3004088F8 /* Presenter */,
@@ -208,13 +207,6 @@
 				700079492824E79E004088F8 /* WeatherUseCase.swift */,
 			);
 			path = UseCase;
-			sourceTree = "<group>";
-		};
-		7000794B2824EDA4004088F8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		7000794E2824F112004088F8 /* Converter */ = {
