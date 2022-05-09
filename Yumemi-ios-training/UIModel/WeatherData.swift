@@ -11,4 +11,8 @@ import UIKit
 struct WeatherData {
     let image: UIImage
     let color: UIColor
+    
+    func create() -> UIImage {
+        return image.withTintColor(color)
+    }
 }

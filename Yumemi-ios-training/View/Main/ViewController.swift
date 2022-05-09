@@ -32,8 +32,7 @@ final class ViewController: UIViewController {
 
 extension ViewController: MainViewProtocol {
     func changeWeather(data: WeatherData) {
-        let image = data.image.withTintColor(data.color)
-        self.weatherImageView.image = image
+        self.weatherImageView.image = data.create()
     }
 }
 

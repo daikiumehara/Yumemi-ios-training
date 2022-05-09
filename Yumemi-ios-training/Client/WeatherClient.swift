@@ -11,6 +11,6 @@ import YumemiWeather
 struct WeatherClient {
     static func fetchWeather() -> Weather {
         let weather = YumemiWeather.fetchWeather()
-        return Weather(rawValue: weather)!
+        return Weather.create(weather)
     }
 }

@@ -11,4 +11,12 @@ enum Weather: String {
     case sunny
     case cloudy
     case rainy
+    case none
+    
+    static func create(_ weatherString: String) -> Weather {
+        guard let weather = Weather(rawValue: weatherString) else {
+            return .none
+        }
+        return weather
+    }
 }
