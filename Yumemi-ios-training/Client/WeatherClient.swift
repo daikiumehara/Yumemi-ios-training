@@ -33,9 +33,4 @@ struct WeatherClient {
         }
         return infraWeatherInfo
     }
-    
-    static func fetctWeather(jsonString: String) throws -> String {
-        let data = try YumemiWeather.fetchWeather(jsonString)
-        return data
-    }
 }
