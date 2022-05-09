@@ -24,6 +24,7 @@
 		7000794A2824E79E004088F8 /* WeatherUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700079492824E79E004088F8 /* WeatherUseCase.swift */; };
 		700079502824F11D004088F8 /* WeatherImageConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000794F2824F11D004088F8 /* WeatherImageConverter.swift */; };
 		700079532824F985004088F8 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700079522824F985004088F8 /* DIContainer.swift */; };
+		700079502824F11D004088F8 /* WeatherImageConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000794F2824F11D004088F8 /* WeatherImageConverter.swift */; };
 		70007957282509F4004088F8 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70007956282509F4004088F8 /* APIError.swift */; };
 		7000795B28250DA4004088F8 /* ErrorAlertGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000795A28250DA4004088F8 /* ErrorAlertGenerator.swift */; };
 		700079682828DA7F004088F8 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700079672828DA7F004088F8 /* WeatherInfo.swift */; };
