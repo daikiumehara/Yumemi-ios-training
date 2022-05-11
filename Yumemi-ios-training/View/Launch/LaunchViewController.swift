@@ -15,5 +15,5 @@ class LaunchViewController: UIViewController {
         mainVC.modalPresentationStyle = .fullScreen
         self.present(mainVC, animated: true)
     }
-    
+
 }
