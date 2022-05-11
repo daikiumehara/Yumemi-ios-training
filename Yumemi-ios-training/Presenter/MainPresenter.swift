@@ -31,6 +31,10 @@ final class MainPresenter: MainPresenterProtocol {
         self.view?.startIndicator()
         self.weatherUseCase.fetchWeather()
     }
+    
+    func didBecomeActice() {
+        self.weatherUseCase.fetchWeather()
+    }
 }
 
 extension MainPresenter: WeatherUseCaseOutput {
