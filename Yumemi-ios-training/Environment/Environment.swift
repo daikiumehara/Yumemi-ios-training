@@ -13,7 +13,6 @@ struct Environment {
         let useCase = self.makeWeatherUseCase()
         let presenter = MainPresenter(view: view,
                                       weatherUseCase: useCase)
-        useCase.setOutput(presenter)
         return presenter
     }
     

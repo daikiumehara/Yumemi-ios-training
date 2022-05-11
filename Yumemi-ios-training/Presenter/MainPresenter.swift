@@ -30,7 +30,3 @@ final class MainPresenter: MainPresenterProtocol {
         self.view?.changeWeather(data: WeatherConverter.convert(weather: weather))
     }
 }
-
-extension MainPresenter: WeatherUseCaseOutput {
-    
-}
