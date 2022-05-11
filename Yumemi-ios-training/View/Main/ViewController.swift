@@ -18,7 +18,7 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter = Environment.makeMainPresenter(view: self)
+        self.presenter = DIContainer.makeMainPresenter(view: self)
     }
 
     @IBAction func onTapCloseButton(_ sender: Any) {

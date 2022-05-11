@@ -12,7 +12,7 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 DerivedData
-*.hmap
+*.mmap
 *.ipa
 *.xcuserstate
 
