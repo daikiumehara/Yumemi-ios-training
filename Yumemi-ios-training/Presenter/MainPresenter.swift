@@ -23,6 +23,7 @@ final class MainPresenter: MainPresenterProtocol {
     }
     
     func onTapResetButton() {
+        self.view?.dismiss()
     }
     
     func onTapReloadButton() {

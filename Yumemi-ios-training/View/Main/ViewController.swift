@@ -8,6 +8,7 @@
 import UIKit
 
 protocol MainViewProtocol: AnyObject {
+    func dismiss()
     func changeWeather(data: WeatherData)
     func showErrorAlert(message: String)
 }
@@ -25,7 +26,7 @@ final class ViewController: UIViewController {
     }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
-        
+        self.presenter?.onTapResetButton()
     }
     
     @IBAction func onTapReloadButton(_ sender: Any) {
@@ -34,6 +35,10 @@ final class ViewController: UIViewController {
 }
 
 extension ViewController: MainViewProtocol {
+    func dismiss() {
+        self.dismiss(animated: true)
+    }
+    
     func showErrorAlert(message: String) {
         let alert = ErrorAlertGenerator.generate(message: message)
         self.present(alert, animated: true)
