@@ -23,6 +23,11 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(forName: .didBecomeActive,
+                                               object: nil,
+                                               queue: .main) { [weak self] _ in
+            self?.presenter?.didBecomeActice()
+        }
     }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
