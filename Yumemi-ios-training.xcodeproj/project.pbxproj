@@ -33,6 +33,8 @@
 		700079702828DCE6004088F8 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000796F2828DCE6004088F8 /* WeatherData.swift */; };
 		700079722828E0A7004088F8 /* WeatherConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700079712828E0A7004088F8 /* WeatherConverter.swift */; };
 		700079742828E62E004088F8 /* SearchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700079732828E62E004088F8 /* SearchParameter.swift */; };
+		70B0C8C0282B4B60006EA7A2 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */; };
+		70B0C8C2282B4B68006EA7A2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		7000796F2828DCE6004088F8 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		700079712828E0A7004088F8 /* WeatherConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConverter.swift; sourceTree = "<group>"; };
 		700079732828E62E004088F8 /* SearchParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParameter.swift; sourceTree = "<group>"; };
+		70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,7 @@
 		700079402824E38C004088F8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				70B0C8BC282B4AC9006EA7A2 /* Launch */,
 				700079412824E396004088F8 /* Main */,
 			);
 			path = View;
@@ -357,6 +362,15 @@
 			path = UIModel;
 			sourceTree = "<group>";
 		};
+		70B0C8BC282B4AC9006EA7A2 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */,
+				70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -470,6 +484,7 @@
 				700079142824B67A004088F8 /* LaunchScreen.storyboard in Resources */,
 				700079112824B67A004088F8 /* Assets.xcassets in Resources */,
 				7000790F2824B678004088F8 /* Main.storyboard in Resources */,
+				70B0C8C2282B4B68006EA7A2 /* Launch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +524,7 @@
 				700079632828A96D004088F8 /* WeatherInfoConverter.swift in Sources */,
 				7000790A2824B678004088F8 /* SceneDelegate.swift in Sources */,
 				700079532824F985004088F8 /* DIContainer.swift in Sources */,
+				70B0C8C0282B4B60006EA7A2 /* LaunchViewController.swift in Sources */,
 				7000796D2828DBBA004088F8 /* WeatherInfoConverter.swift in Sources */,
 				700079502824F11D004088F8 /* WeatherImageConverter.swift in Sources */,
 				7000794D2824EE1D004088F8 /* WeatherImageData.swift in Sources */,
@@ -697,7 +713,7 @@
 				INFOPLIST_FILE = "Yumemi-ios-training/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Launch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -725,7 +741,7 @@
 				INFOPLIST_FILE = "Yumemi-ios-training/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Launch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
