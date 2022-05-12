@@ -62,5 +62,9 @@ extension ViewController: MainViewProtocol {
     func inject(presenter: MainPresenterProtocol) {
         self.presenter = presenter
     }
+    
+    func inject(presenter: MainPresenterProtocol) {
+        self.presenter = presenter
+    }
 }
 
