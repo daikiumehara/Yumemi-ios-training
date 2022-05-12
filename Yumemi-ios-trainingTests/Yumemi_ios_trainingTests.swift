@@ -25,6 +25,10 @@ class Yumemi_ios_trainingTests: XCTestCase {
     }
 
     func testExample() throws {
+   
+    }
+    
+    func testWeather() throws {
         let testList = [WeatherInfo(maxTemp: 10, minTemp: 5, weather: .sunny),
                         WeatherInfo(maxTemp: 20, minTemp: -5, weather: .cloudy),
                         WeatherInfo(maxTemp: 30, minTemp: 0, weather: .rainy)]
