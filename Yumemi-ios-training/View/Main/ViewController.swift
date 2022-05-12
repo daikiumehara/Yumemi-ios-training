@@ -34,6 +34,15 @@ final class ViewController: UIViewController {
     }
 }
 
+extension ViewController {
+    static func instantiate() -> ViewController {
+        guard let initialVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? ViewController else {
+            fatalError("VCが見つかりませんでした。")
+        }
+        return initialVC
+    }
+}
+
 extension ViewController: MainViewProtocol {
     func dismiss() {
         self.dismiss(animated: true)

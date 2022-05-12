@@ -9,10 +9,7 @@ import UIKit
 
 class LaunchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
-        guard let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() else {
-            print("VCが見つかりませんでした。")
-            return
-        }
+        let mainVC = ViewController.instantiate()
         mainVC.modalPresentationStyle = .fullScreen
         self.present(mainVC, animated: true)
     }
