@@ -12,7 +12,7 @@ protocol WeatherUseCaseOutput: AnyObject {
     func happenedError(error: String)
 }
 
-protocol WeatherUseCaseProtocol {
+protocol WeatherUseCaseProtocol: AnyObject {
     func setOutput(_ output: WeatherUseCaseOutput)
     func fetchWeather()
 }
