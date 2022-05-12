@@ -32,12 +32,15 @@ final class WeatherUseCase: WeatherUseCaseProtocol {
     func fetchWeather() {
         let params = SearchParameter(area: "tokyo",
                                      date: "2020-04-01T12:00:00+09:00")
-        let result = self.weatherRepository.fetchWeather(params: params)
-        switch result {
-        case .success(let weather):
-            self.output?.changeWeather(weather: weather)
-        case .failure(let error):
-            self.output?.happenedError(error: error.text)
+        self.weatherRepository.syncFetchWeather(params: params) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let weather):
+                    self.output?.changeWeather(weather: weather)
+                case .failure(let error):
+                    self.output?.happenedError(error: error.text)
+                }
+            }
         }
     }
 }

@@ -12,6 +12,8 @@ protocol WeatherRepositoryProtocol: AnyObject {
     func fetchWeather() -> Weather
     func fetchWeather(at: String) -> Result<Weather, APIError>
     func fetchWeather(params: SearchParameter) -> Result<WeatherInfo, APIError>
+    func syncFetchWeather(params: SearchParameter,
+                          completion: @escaping (Result<WeatherInfo, APIError>) -> Void)
 }
 
 final class WeatherRepository: WeatherRepositoryProtocol {
@@ -53,7 +55,7 @@ final class WeatherRepository: WeatherRepositoryProtocol {
     
     func syncFetchWeather(params: SearchParameter,
                           completion: @escaping (Result<WeatherInfo, APIError>) -> Void) {
-        DispatchQueue.global().sync {
+        DispatchQueue.global().async {
             guard let params = try? JSONEncoder().encode(params),
                   let jsonString = String(data: params, encoding: .utf8) else {
                 completion(.failure(.missDecode))
