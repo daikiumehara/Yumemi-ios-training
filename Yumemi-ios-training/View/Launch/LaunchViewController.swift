@@ -8,9 +8,12 @@
 import UIKit
 
 class LaunchViewController: UIViewController {
+    
     override func viewDidAppear(_ animated: Bool) {
         let mainVC = ViewController.instantiate()
+        mainVC.inject(presenter: DIContainer.getMainPresenter(view: mainVC))
         mainVC.modalPresentationStyle = .fullScreen
         self.present(mainVC, animated: true)
     }
+    
 }
