@@ -8,6 +8,7 @@
 import UIKit
 
 protocol MainViewProtocol: AnyObject {
+    func inject(presenter: MainPresenterProtocol)
     func dismiss()
     func changeWeather(data: WeatherData)
     func showErrorAlert(message: String)
@@ -22,7 +23,6 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter = DIContainer.getMainPresenter(view: self)
     }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
@@ -57,6 +57,10 @@ extension ViewController: MainViewProtocol {
         self.weatherImageView.image = data.imageData.image
         self.maxTempLabel.text = data.maxTemp
         self.minTempLabel.text = data.minTemp
+    }
+    
+    func inject(presenter: MainPresenterProtocol) {
+        self.presenter = presenter
     }
 }
 
