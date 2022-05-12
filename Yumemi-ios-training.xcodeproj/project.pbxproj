@@ -136,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				700079512824F8BE004088F8 /* DIContainer */,
-				70B0C8C3282B937C006EA7A2 /* Extension */,
 				7000796E2828DCCE004088F8 /* UIModel */,
 				700079692828DA8B004088F8 /* InfraObject */,
 				7000795828250D91004088F8 /* Mapper */,
