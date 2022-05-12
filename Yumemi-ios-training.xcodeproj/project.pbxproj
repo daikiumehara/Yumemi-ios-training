@@ -36,7 +36,6 @@
 		700079742828E62E004088F8 /* FetchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700079732828E62E004088F8 /* FetchParameter.swift */; };
 		70B0C8C0282B4B60006EA7A2 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */; };
 		70B0C8C2282B4B68006EA7A2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */; };
-		70B0C8C7282B944F006EA7A2 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0C8C6282B944F006EA7A2 /* NotificationName+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +86,6 @@
 		700079732828E62E004088F8 /* FetchParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchParameter.swift; sourceTree = "<group>"; };
 		70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
-		70B0C8C6282B944F006EA7A2 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				700079512824F8BE004088F8 /* DIContainer */,
-				70B0C8C3282B937C006EA7A2 /* Extension */,
 				7000796E2828DCCE004088F8 /* UIModel */,
 				700079692828DA8B004088F8 /* InfraObject */,
 				7000795828250D91004088F8 /* Mapper */,
@@ -413,14 +410,6 @@
 				70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */,
 			);
 			path = Launch;
-			sourceTree = "<group>";
-		};
-		70B0C8C3282B937C006EA7A2 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				70B0C8C6282B944F006EA7A2 /* NotificationName+Extension.swift */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
