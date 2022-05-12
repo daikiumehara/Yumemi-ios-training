@@ -158,6 +158,7 @@
 		7000791D2824B67A004088F8 /* Yumemi-ios-trainingTests */ = {
 			isa = PBXGroup;
 			children = (
+				7044B5EC282CFF1E0087AF80 /* Mock */,
 				7000791E2824B67A004088F8 /* Yumemi_ios_trainingTests.swift */,
 			);
 			path = "Yumemi-ios-trainingTests";
@@ -460,6 +461,7 @@
 				700079482824E78F004088F8 /* WeatherRepository.swift in Sources */,
 				70BAA565283B4FC50034F789 /* WeatherInfoConverter.swift in Sources */,
 				7000790C2824B678004088F8 /* ViewController.swift in Sources */,
+				7044B5EE282D002B0087AF80 /* MockMainPresenter.swift in Sources */,
 				7000795B28250DA4004088F8 /* ErrorAlertGenerator.swift in Sources */,
 				700079442824E3C7004088F8 /* MainPresenter.swift in Sources */,
 				700079742828E62E004088F8 /* FetchParameter.swift in Sources */,
