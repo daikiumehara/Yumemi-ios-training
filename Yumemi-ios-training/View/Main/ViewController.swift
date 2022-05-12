@@ -32,7 +32,7 @@ final class ViewController: UIViewController {
 
 extension ViewController: MainViewProtocol {
     func changeWeather(data: WeatherData) {
-        self.weatherImageView.image = data.preconfiguredImage
+        self.weatherImageView.image = data.image
     }
 }
 
