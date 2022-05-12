@@ -32,33 +32,33 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let data = WeatherInfo(maxTemp: 10, minTemp: 5, weather: .sunny)
         presenter.changeWeather(weather: data)
         let weatherData = WeatherConverter.convert(data: data)
-        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.createImage())
+        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.image)
         
         presenter.data = data
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.createImage())
+        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.image)
     }
     
     func test_天気予報がcloudyだったら_画面に曇り画像が表示されること() {
         let data = WeatherInfo(maxTemp: 10, minTemp: 5, weather: .cloudy)
         presenter.changeWeather(weather: data)
         let weatherData = WeatherConverter.convert(data: data)
-        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.createImage())
+        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.image)
         
         presenter.data = data
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.createImage())
+        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.image)
     }
     
     func test_天気予報がrainyだったら_画面に雨画像が表示されること() {
         let data = WeatherInfo(maxTemp: 10, minTemp: 5, weather: .rainy)
         presenter.changeWeather(weather: data)
         let weatherData = WeatherConverter.convert(data: data)
-        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.createImage())
+        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.image)
         
         presenter.data = data
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.createImage())
+        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.image)
     }
     
     func test_天気予報の最高気温がUILabelに反映されること() {
