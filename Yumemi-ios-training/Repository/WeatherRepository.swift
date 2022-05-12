@@ -51,6 +51,32 @@ final class WeatherRepository: WeatherRepositoryProtocol {
         }
     }
     
+    func syncFetchWeather(params: SearchParameter,
+                          completion: @escaping (Result<WeatherInfo, APIError>) -> Void) {
+        DispatchQueue.global().sync {
+            guard let params = try? JSONEncoder().encode(params),
+                  let jsonString = String(data: params, encoding: .utf8) else {
+                completion(.failure(.missDecode))
+                return
+            }
+            do {
+                guard let data = try WeatherClient.syncFetchWeather(jsonString).data(using: .utf8) else {
+                    return completion(.failure(.failedGetData))
+                }
+                do {
+                    let info = try JSONDecoder().decode(InfraWeatherInfo.self,
+                                                        from: data)
+                    return completion(.success(WeatherInfoConverter.convert(data: info)))
+                } catch {
+                    return completion(.failure(.missDecode))
+                }
+            } catch {
+                let apiError = self.convertError(error: error)
+                completion(.failure(apiError))
+            }
+        }
+    }
+    
     private func convertError(error: Error) -> APIError {
         guard let error = error as? YumemiWeatherError else {
             return .unexpected

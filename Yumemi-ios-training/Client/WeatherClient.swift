@@ -23,4 +23,9 @@ struct WeatherClient {
         let data = try YumemiWeather.fetchWeather(jsonString)
         return data
     }
+    
+    static func syncFetchWeather(_ jsonString: String) throws -> String {
+        let data = try YumemiWeather.syncFetchWeather(jsonString)
+        return data
+    }
 }
