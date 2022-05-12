@@ -12,12 +12,15 @@ protocol MainViewProtocol: AnyObject {
     func dismiss()
     func changeWeather(data: WeatherData)
     func showErrorAlert(message: String)
+    func startIndicator()
+    func stopIndicator()
 }
 
 final class ViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     private var presenter: MainPresenterProtocol?
     
@@ -49,6 +52,14 @@ extension ViewController {
 }
 
 extension ViewController: MainViewProtocol {
+    func startIndicator() {
+        self.indicator.startAnimating()
+    }
+    
+    func stopIndicator() {
+        self.indicator.stopAnimating()
+    }
+    
     func dismiss() {
         self.dismiss(animated: true)
     }
