@@ -9,9 +9,15 @@ import XCTest
 @testable import Yumemi_ios_training
 
 class Yumemi_ios_trainingTests: XCTestCase {
+    var vc: ViewController!
+    var presenter: MockMainPresneter!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        vc = ViewController.instantiate()
+        vc.loadViewIfNeeded()
+        presenter = MockMainPresneter()
+        vc.inject(presenter: presenter)
+        presenter.view = vc
     }
 
     override func tearDownWithError() throws {
@@ -19,12 +25,16 @@ class Yumemi_ios_trainingTests: XCTestCase {
     }
 
     func testExample() throws {
-        
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        let testList = [WeatherInfo(maxTemp: 10, minTemp: 5, weather: .sunny),
+                        WeatherInfo(maxTemp: 20, minTemp: -5, weather: .cloudy),
+                        WeatherInfo(maxTemp: 30, minTemp: 0, weather: .rainy)]
+        testList.forEach { data in
+            presenter.changeWeather(weather: data)
+            let weatherData = WeatherConverter.convert(data: data)
+            XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.createImage())
+            XCTAssertEqual(vc.maxTempLabel.text!, weatherData.maxTemp)
+            XCTAssertEqual(vc.minTempLabel.text!, weatherData.minTemp)
+        }
     }
 
     func testPerformanceExample() throws {
