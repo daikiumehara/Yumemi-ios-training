@@ -26,7 +26,7 @@ final class ViewController: UIViewController {
     }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
-        self.presenter?.onTapResetButton()
+        self.presenter?.onTapCloseButton()
     }
     
     @IBAction func onTapReloadButton(_ sender: Any) {
