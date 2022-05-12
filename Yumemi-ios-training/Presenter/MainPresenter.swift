@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MainPresenterProtocol: AnyObject {
-    func onTapResetButton()
+    func onTapCloseButton()
     func onTapReloadButton()
 }
 
@@ -22,7 +22,7 @@ final class MainPresenter: MainPresenterProtocol {
         self.weatherUseCase = weatherUseCase
     }
     
-    func onTapResetButton() {
+    func onTapCloseButton() {
         self.view?.dismiss()
     }
     
