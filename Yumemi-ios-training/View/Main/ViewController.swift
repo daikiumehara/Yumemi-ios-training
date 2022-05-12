@@ -32,6 +32,10 @@ final class ViewController: UIViewController {
             self?.presenter?.reloadAction()
         }
     }
+    
+    deinit {
+        print("ViewControler deinit")
+    }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
         self.presenter?.closeAction()
