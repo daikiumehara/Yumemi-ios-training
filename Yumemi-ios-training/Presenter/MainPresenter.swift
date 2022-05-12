@@ -9,20 +9,11 @@
 import Foundation
 
 protocol MainPresenterProtocol: AnyObject {
-<<<<<<< HEAD
     func closeAction()
     func reloadAction()
 }
 
 final class MainPresenter: MainPresenterProtocol {
-=======
-    func onTapCloseButton()
-    func onTapReloadButton()
-    func didBecomeActice()
-}
-
-class MainPresenter: MainPresenterProtocol {
->>>>>>> 35d22b0 (MockのPresenterを作成しました)
     private weak var view: MainViewProtocol?
     private let weatherUseCase: WeatherUseCaseProtocol
     

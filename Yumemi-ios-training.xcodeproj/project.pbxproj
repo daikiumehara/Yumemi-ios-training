@@ -32,10 +32,7 @@
 		700079702828DCE6004088F8 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000796F2828DCE6004088F8 /* WeatherData.swift */; };
 		700079722828E0A7004088F8 /* WeatherConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700079712828E0A7004088F8 /* WeatherConverter.swift */; };
 		700079742828E62E004088F8 /* SearchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700079732828E62E004088F8 /* SearchParameter.swift */; };
-<<<<<<< HEAD
 		7044B5EF282E79AC0087AF80 /* WeatherInfoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000796C2828DBBA004088F8 /* WeatherInfoConverter.swift */; };
-=======
->>>>>>> 35d22b0 (MockのPresenterを作成しました)
 		7044B5EE282D002B0087AF80 /* MockMainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7044B5ED282D002B0087AF80 /* MockMainPresenter.swift */; };
 		70B0C8C0282B4B60006EA7A2 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */; };
 		70B0C8C2282B4B68006EA7A2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */; };
