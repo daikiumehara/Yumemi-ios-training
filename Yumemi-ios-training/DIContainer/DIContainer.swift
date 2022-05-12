@@ -9,7 +9,7 @@ import Foundation
 
 struct DIContainer {
     //MARK: - Presenter
-    static func makeMainPresenter(view: MainViewProtocol) -> MainPresenterProtocol {
+    static func getMainPresenter(view: MainViewProtocol) -> MainPresenterProtocol {
         let useCase = self.makeWeatherUseCase()
         let presenter = MainPresenter(view: view,
                                       weatherUseCase: useCase)
