@@ -40,6 +40,7 @@ extension MainPresenter: WeatherUseCaseOutput {
     }
     
     func happenedError(error: String) {
+        self.view?.stopIndicator()
         self.view?.showErrorAlert(message: error)
     }
 }
