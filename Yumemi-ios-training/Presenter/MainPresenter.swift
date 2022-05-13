@@ -29,13 +29,6 @@ final class MainPresenter: MainPresenterProtocol {
     
     func reloadAction() {
         self.view?.startIndicator()
-<<<<<<< HEAD
-        self.weatherUseCase.fetchWeather()
-    }
-    
-    func didBecomeActice() {
-=======
->>>>>>> bf96fc0 (Syncメソッドを用いてデータを取得するように変更しました。)
         self.weatherUseCase.fetchWeather()
     }
 }
