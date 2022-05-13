@@ -1,3 +1,4 @@
+
 //
 //  MainPresenter.swift
 //  Yumemi-ios-training
@@ -8,8 +9,8 @@
 import Foundation
 
 protocol MainPresenterProtocol: AnyObject {
-    func onTapCloseButton()
-    func onTapReloadButton()
+    func closeAction()
+    func reloadAction()
 }
 
 final class MainPresenter: MainPresenterProtocol {
@@ -22,11 +23,11 @@ final class MainPresenter: MainPresenterProtocol {
         self.weatherUseCase = weatherUseCase
     }
     
-    func onTapCloseButton() {
+    func closeAction() {
         self.view?.dismiss()
     }
     
-    func onTapReloadButton() {
+    func reloadAction() {
         self.weatherUseCase.fetchWeather()
     }
 }

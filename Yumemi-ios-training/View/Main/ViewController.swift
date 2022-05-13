@@ -26,11 +26,11 @@ final class ViewController: UIViewController {
     }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
-        self.presenter?.onTapCloseButton()
+        self.presenter?.closeAction()
     }
     
     @IBAction func onTapReloadButton(_ sender: Any) {
-        self.presenter?.onTapReloadButton()
+        self.presenter?.reloadAction()
     }
 }
 
