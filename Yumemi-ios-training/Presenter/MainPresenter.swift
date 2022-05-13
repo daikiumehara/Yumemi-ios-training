@@ -28,6 +28,7 @@ final class MainPresenter: MainPresenterProtocol {
     }
     
     func reloadAction() {
+        self.view?.startIndicator()
         self.weatherUseCase.fetchWeather()
     }
 }
