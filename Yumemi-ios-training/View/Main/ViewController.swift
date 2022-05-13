@@ -26,7 +26,7 @@ final class ViewController: UIViewController {
         NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
                                                object: nil,
                                                queue: .main) { [weak self] _ in
-            self?.presenter?.didBecomeActice()
+            self?.presenter?.reloadAction()
         }
     }
 

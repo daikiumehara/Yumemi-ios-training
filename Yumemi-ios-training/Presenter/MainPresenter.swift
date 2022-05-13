@@ -11,7 +11,6 @@ import Foundation
 protocol MainPresenterProtocol: AnyObject {
     func closeAction()
     func reloadAction()
-    func didBecomeActice()
 }
 
 final class MainPresenter: MainPresenterProtocol {
@@ -29,10 +28,6 @@ final class MainPresenter: MainPresenterProtocol {
     }
     
     func reloadAction() {
-        self.weatherUseCase.fetchWeather()
-    }
-    
-    func didBecomeActice() {
         self.weatherUseCase.fetchWeather()
     }
 }
