@@ -7,14 +7,18 @@
 
 import Foundation
 
-class MockMainPresneter: MainPresenterProtocol {
+class MockMainPresenter: MainPresenterProtocol {
     weak var view: MainViewProtocol?
+    var data: WeatherInfo!
     
     func closeAction() {}
-    func reloadAction() {}
+    
+    func reloadAction() {
+        self.changeWeather(weather: self.data)
+    }
 }
 
-extension MockMainPresneter: WeatherUseCaseOutput {
+extension MockMainPresenter: WeatherUseCaseOutput {
     func changeWeather(weather: WeatherInfo) {
         view?.changeWeather(data: WeatherConverter.convert(data: weather))
     }
