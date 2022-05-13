@@ -35,7 +35,7 @@ extension MainPresenter: WeatherUseCaseOutput {
         self.view?.changeWeather(data: WeatherConverter.convert(weather: weather))
     }
     
-    func happendError(error: String) {
+    func happenedError(error: String) {
         self.view?.showErrorAlert(message: error)
     }
 }

@@ -8,11 +8,11 @@
 import UIKit
 
 struct ErrorAlertGenerator {
-    static func geenrate(messsage: String) -> UIAlertController {
+    static func generate(message: String) -> UIAlertController {
         let action = UIAlertAction(title: "OK",
                                    style: .default)
         let alert = UIAlertController(title: "エラー",
-                                       message: messsage,
+                                       message: message,
                                        preferredStyle: .alert)
         alert.addAction(action)
         return alert

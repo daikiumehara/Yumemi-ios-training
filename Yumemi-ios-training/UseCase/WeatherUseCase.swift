@@ -9,7 +9,7 @@ import Foundation
 
 protocol WeatherUseCaseOutput: AnyObject {
     func changeWeather(weather: Weather)
-    func happendError(error: String)
+    func happenedError(error: String)
 }
 
 protocol WeatherUseCaseProtocol {
@@ -35,7 +35,7 @@ final class WeatherUseCase: WeatherUseCaseProtocol {
         case .success(let weather):
             self.output?.changeWeather(weather: weather)
         case .failure(let error):
-            self.output?.happendError(error: error.text)
+            self.output?.happenedError(error: error.text)
         }
     }
 }
