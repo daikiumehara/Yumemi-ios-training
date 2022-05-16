@@ -30,8 +30,9 @@ final class WeatherUseCase: WeatherUseCaseProtocol {
     
     func fetchWeather() {
         let param = FetchParameter(area: "tokyo",
-                                     date: Date())
-        weatherRepository.syncFetchWeather(param: param) { result in
+                                   date: Date())
+        Task {
+            let result = await self.weatherRepository.syncFetchWeather(param: param)
             self.callbackQueue.async {
                 switch result {
                 case .success(let weatherInfo):
