@@ -22,16 +22,15 @@ final class WeatherRepository: WeatherRepositoryProtocol {
         do {
             let weather = try WeatherClient.fetchWeather(area: area)
             return .success(weather)
-        } catch {
-            guard let error = error as? YumemiWeatherError else {
-                return .failure(.unexpected)
-            }
+        } catch let error as YumemiWeatherError {
             switch error {
             case .invalidParameterError:
                 return .failure(.invalidParameter)
             case .unknownError:
                 return .failure(.unknown)
             }
+        } catch {
+            return .failure(.unexpected)
         }
     }
 }
