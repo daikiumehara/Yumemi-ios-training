@@ -12,21 +12,17 @@ protocol WeatherUseCaseOutput: AnyObject {
     func happenedError(error: String)
 }
 
-protocol WeatherUseCaseProtocol {
-    func setOutput(_ output: WeatherUseCaseOutput)
+protocol WeatherUseCaseProtocol: AnyObject {
+    var output: WeatherUseCaseOutput? { get set }
     func fetchWeather()
 }
 
 final class WeatherUseCase: WeatherUseCaseProtocol {
-    private weak var output: WeatherUseCaseOutput?
+    weak var output: WeatherUseCaseOutput?
     private let weatherRepository: WeatherRepositoryProtocol
     
     init(weatherRepository: WeatherRepositoryProtocol) {
         self.weatherRepository = weatherRepository
-    }
-    
-    func setOutput(_ output: WeatherUseCaseOutput) {
-        self.output = output
     }
     
     func fetchWeather() {

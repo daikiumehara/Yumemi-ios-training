@@ -13,7 +13,7 @@ struct DIContainer {
         let useCase = self.makeWeatherUseCase()
         let presenter = MainPresenter(view: view,
                                       weatherUseCase: useCase)
-        useCase.setOutput(presenter)
+        useCase.output = presenter
         return presenter
     }
     
