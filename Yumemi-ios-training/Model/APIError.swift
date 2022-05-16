@@ -14,9 +14,9 @@ enum APIError: Error {
     
     var text: String {
         switch self {
-        case .unknown: return "不明なエラーが発生しました"
-        case .invalidParameter: return "無効なパラメータが渡されました"
         case .unexpected: return "予想外のエラーが発生しました"
+        case .invalidParameter: return "無効なパラメータが渡されました"
+        case .unknown: return "不明なエラーが発生しました"
         }
     }
 }
