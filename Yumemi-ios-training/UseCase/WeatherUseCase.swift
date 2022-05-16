@@ -30,7 +30,7 @@ final class WeatherUseCase: WeatherUseCaseProtocol {
     }
     
     func fetchWeather() {
-        let result = self.weatherRepository.fetchWeather(at: "tokyo")
+        let result = self.weatherRepository.fetchWeather(area: "tokyo")
         switch result {
         case .success(let weather):
             self.output?.changeWeather(weather: weather)

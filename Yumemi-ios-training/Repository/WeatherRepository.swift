@@ -10,7 +10,7 @@ import YumemiWeather
 
 protocol WeatherRepositoryProtocol: AnyObject {
     func fetchWeather() -> Weather
-    func fetchWeather(at: String) -> Result<Weather, APIError>
+    func fetchWeather(area: String) -> Result<Weather, APIError>
 }
 
 final class WeatherRepository: WeatherRepositoryProtocol {
@@ -18,9 +18,9 @@ final class WeatherRepository: WeatherRepositoryProtocol {
         return WeatherClient.fetchWeather()
     }
     
-    func fetchWeather(at: String) -> Result<Weather, APIError> {
+    func fetchWeather(area: String) -> Result<Weather, APIError> {
         do {
-            let weather = try WeatherClient.fetchWeather(at: at)
+            let weather = try WeatherClient.fetchWeather(area: area)
             return .success(weather)
         } catch {
             guard let error = error as? YumemiWeatherError else {
