@@ -26,7 +26,16 @@ final class MainPresenter: MainPresenterProtocol {
     }
     
     func onTapReloadButton() {
-        let weather = self.weatherUseCase.fetchWeather()
+        self.weatherUseCase.fetchWeather()
+    }
+}
+
+extension MainPresenter: WeatherUseCaseOutput {
+    func changeWeather(weather: Weather) {
         self.view?.changeWeather(data: WeatherConverter.convert(weather: weather))
+    }
+    
+    func happenedError(error: String) {
+        self.view?.showErrorAlert(message: error)
     }
 }
