@@ -38,13 +38,12 @@ final class WeatherRepository: WeatherRepositoryProtocol {
             guard let data = try WeatherClient.fetchWeather(jsonString: jsonString).data(using: .utf8) else {
                 return .failure(.failedGetData)
             }
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let info = try decoder.decode(InfraWeatherInfo.self,
-                                                    from: data)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            if let info = try? decoder.decode(InfraWeatherInfo.self,
+                                             from: data) {
                 return .success(WeatherInfoConverter.convert(info: info))
-            } catch {
+            } else {
                 return .failure(.missDecode)
             }
         } catch {
