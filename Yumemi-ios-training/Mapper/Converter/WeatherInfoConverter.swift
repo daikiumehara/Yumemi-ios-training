@@ -11,6 +11,6 @@ struct WeatherInfoConverter {
     static func convert(data: InfraWeatherInfo) -> WeatherInfo {
         return WeatherInfo(maxTemp: data.maxTemp,
                            minTemp: data.minTemp,
-                           weather: Weather(rawValue: data.weather)!)
+                           weather: data.weather)
     }
 }

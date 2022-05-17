@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SearchParameter: Encodable {
+struct FetchParameter: Encodable {
     let area: String
     let date: String
 }
