@@ -35,7 +35,7 @@ final class ViewController: UIViewController {
 
 extension ViewController: MainViewProtocol {
     func showErrorAlert(message: String) {
-        let alert = ErrorAlertGenerator.generate(message: message)
+        let alert = ErrorAlertBuilder.build(message: message)
         self.present(alert, animated: true)
     }
     
