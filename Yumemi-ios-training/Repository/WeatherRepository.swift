@@ -11,7 +11,7 @@ import YumemiWeather
 protocol WeatherRepositoryProtocol: AnyObject {
     func fetchWeather() -> Weather
     func fetchWeather(area: String) -> Result<Weather, APIError>
-    func fetchWeather(params: SearchParameter) -> Result<WeatherInfo, APIError>
+    func fetchWeather(params: FetchParameter) -> Result<WeatherInfo, APIError>
 }
 
 final class WeatherRepository: WeatherRepositoryProtocol {
@@ -29,7 +29,7 @@ final class WeatherRepository: WeatherRepositoryProtocol {
         }
     }
     
-    func fetchWeather(params: SearchParameter) -> Result<WeatherInfo, APIError> {
+    func fetchWeather(params: FetchParameter) -> Result<WeatherInfo, APIError> {
         guard let params = try? JSONEncoder().encode(params),
               let jsonString = String(data: params, encoding: .utf8) else {
             return .failure(.missEncode)

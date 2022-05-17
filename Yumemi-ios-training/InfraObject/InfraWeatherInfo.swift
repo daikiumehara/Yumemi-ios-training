@@ -11,5 +11,5 @@ struct InfraWeatherInfo: Codable {
     let maxTemp: Int
     let minTemp: Int
     let date: String
-    let weather: String
+    let weather: Weather
 }
