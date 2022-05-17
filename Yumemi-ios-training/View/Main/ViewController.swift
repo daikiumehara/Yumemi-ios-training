@@ -40,7 +40,7 @@ extension ViewController: MainViewProtocol {
     }
     
     func changeWeather(data: WeatherData) {
-        self.weatherImageView.image = data.imageData.image
+        self.weatherImageView.image = data.image
         self.maxTempLabel.text = data.maxTemp
         self.minTempLabel.text = data.minTemp
     }

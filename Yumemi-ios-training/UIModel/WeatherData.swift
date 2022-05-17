@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 struct WeatherData {
-    let imageData: WeatherImageData
+    let image: UIImage
     let maxTemp: String
     let minTemp: String
 }

@@ -43,7 +43,7 @@ final class WeatherRepository: WeatherRepositoryProtocol {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let info = try decoder.decode(InfraWeatherInfo.self,
                                                     from: data)
-                return .success(WeatherInfoConverter.convert(data: info))
+                return .success(WeatherInfoConverter.convert(info: info))
             } catch {
                 return .failure(.missDecode)
             }
