@@ -26,7 +26,7 @@ final class WeatherUseCase: WeatherUseCaseProtocol {
     }
     
     func fetchWeather() {
-        let params = SearchParameter(area: "tokyo",
+        let params = FetchParameter(area: "tokyo",
                                      date: "2020-04-01T12:00:00+09:00")
         let result = self.weatherRepository.fetchWeather(params: params)
         switch result {
