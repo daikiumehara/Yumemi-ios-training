@@ -39,7 +39,9 @@ final class WeatherRepository: WeatherRepositoryProtocol {
                 return .failure(.failedGetData)
             }
             do {
-                let info = try JSONDecoder().decode(InfraWeatherInfo.self,
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let info = try decoder.decode(InfraWeatherInfo.self,
                                                     from: data)
                 return .success(WeatherInfoConverter.convert(data: info))
             } catch {

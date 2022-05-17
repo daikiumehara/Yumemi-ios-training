@@ -12,11 +12,4 @@ struct InfraWeatherInfo: Codable {
     let minTemp: Int
     let date: String
     let weather: String
-    
-    private enum CodingKeys: String, CodingKey {
-        case maxTemp = "max_temp"
-        case minTemp = "min_temp"
-        case date
-        case weather
-    }
 }
