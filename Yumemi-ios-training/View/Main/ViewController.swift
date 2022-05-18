@@ -12,6 +12,7 @@ protocol MainViewProtocol: AnyObject {
     func dismiss()
     func changeWeather(weatherUIData: WeatherUIData)
     func showErrorAlert(message: String)
+    func closeErrorAlert()
 }
 
 final class ViewController: UIViewController {
@@ -20,6 +21,7 @@ final class ViewController: UIViewController {
     @IBOutlet weak var minTempLabel: UILabel!
     
     private var presenter: MainPresenterProtocol?
+    private weak var alert: UIAlertController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +57,7 @@ extension ViewController: MainViewProtocol {
     
     func showErrorAlert(message: String) {
         let alert = ErrorAlertBuilder.build(message: message)
+        self.alert = alert
         self.present(alert, animated: true)
     }
     
@@ -68,8 +71,8 @@ extension ViewController: MainViewProtocol {
         self.presenter = presenter
     }
     
-    func inject(presenter: MainPresenterProtocol) {
-        self.presenter = presenter
+    func closeErrorAlert() {
+        self.alert?.dismiss(animated: true)
     }
 }
 
