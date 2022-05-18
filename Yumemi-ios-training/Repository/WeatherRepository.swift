@@ -36,9 +36,9 @@ final class WeatherRepository: WeatherRepositoryProtocol {
               let jsonString = String(data: param, encoding: .utf8) else {
             return .failure(.missEncode)
         }
-        print(jsonString)
         do {
-            guard let data = try WeatherClient.fetchWeather(jsonString: jsonString).data(using: .utf8) else {
+            let weather = try WeatherClient.fetchWeather(jsonString: jsonString)
+            guard let data = weather.data(using: .utf8) else {
                 return .failure(.failedGetData)
             }
             let decoder = JSONDecoder()
