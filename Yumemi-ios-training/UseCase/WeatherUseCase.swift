@@ -27,7 +27,7 @@ final class WeatherUseCase: WeatherUseCaseProtocol {
     
     func fetchWeather() {
         let param = FetchParameter(area: "tokyo",
-                                     date: "2020-04-01T12:00:00+09:00")
+                                     date: Date())
         let result = self.weatherRepository.fetchWeather(param: param)
         switch result {
         case .success(let weather):

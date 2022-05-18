@@ -30,10 +30,13 @@ final class WeatherRepository: WeatherRepositoryProtocol {
     }
     
     func fetchWeather(param: FetchParameter) -> Result<WeatherInfo, APIError> {
-        guard let param = try? JSONEncoder().encode(param),
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        guard let param = try? encoder.encode(param),
               let jsonString = String(data: param, encoding: .utf8) else {
             return .failure(.missEncode)
         }
+        print(jsonString)
         do {
             guard let data = try WeatherClient.fetchWeather(jsonString: jsonString).data(using: .utf8) else {
                 return .failure(.failedGetData)
