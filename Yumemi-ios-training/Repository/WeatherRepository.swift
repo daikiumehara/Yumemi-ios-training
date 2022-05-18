@@ -43,6 +43,7 @@ final class WeatherRepository: WeatherRepositoryProtocol {
             }
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
+            decoder.dateDecodingStrategy = .iso8601
             if let info = try? decoder.decode(InfraWeatherInfo.self,
                                              from: data) {
                 return .success(WeatherInfoConverter.convert(info: info))

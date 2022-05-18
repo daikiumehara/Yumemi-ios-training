@@ -10,6 +10,6 @@ import Foundation
 struct InfraWeatherInfo: Codable {
     let maxTemp: Int
     let minTemp: Int
-    let date: String
+    let date: Date
     let weather: Weather
 }
