@@ -62,16 +62,15 @@ final class WeatherRepository: WeatherRepositoryProtocol {
                 return
             }
             do {
-                guard let data = try WeatherClient.syncFetchWeather(jsonString).data(using: .utf8) else {
+                let weather = try WeatherClient.syncFetchWeather(jsonString)
+                guard let data = weather.data(using: .utf8) else {
                     return completion(.failure(.failedGetData))
                 }
-                do {
-                    let info = try JSONDecoder().decode(InfraWeatherInfo.self,
-                                                        from: data)
-                    return completion(.success(WeatherInfoConverter.convert(data: info)))
-                } catch {
+                guard let info = try? JSONDecoder().decode(InfraWeatherInfo.self,
+                                                           from: data) else {
                     return completion(.failure(.missDecode))
                 }
+                return completion(.success(WeatherInfoConverter.convert(data: info)))
             } catch {
                 let apiError = self.convertError(error: error)
                 completion(.failure(apiError))
