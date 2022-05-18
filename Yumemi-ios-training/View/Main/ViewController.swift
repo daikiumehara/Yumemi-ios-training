@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainViewProtocol: AnyObject {
-    func changeWeather(data: WeatherData)
+    func changeWeather(weatherData: WeatherData)
     func showErrorAlert(message: String)
 }
 
@@ -39,10 +39,10 @@ extension ViewController: MainViewProtocol {
         self.present(alert, animated: true)
     }
     
-    func changeWeather(data: WeatherData) {
-        self.weatherImageView.image = data.image
-        self.maxTempLabel.text = data.maxTemp
-        self.minTempLabel.text = data.minTemp
+    func changeWeather(weatherData: WeatherData) {
+        self.weatherImageView.image = weatherData.image
+        self.maxTempLabel.text = weatherData.maxTemp
+        self.minTempLabel.text = weatherData.minTemp
     }
 }
 

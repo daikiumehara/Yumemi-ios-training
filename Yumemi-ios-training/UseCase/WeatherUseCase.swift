@@ -8,7 +8,7 @@
 import Foundation
 
 protocol WeatherUseCaseOutput: AnyObject {
-    func changeWeather(weather: WeatherInfo)
+    func changeWeather(info: WeatherInfo)
     func happenedError(error: String)
 }
 
@@ -31,7 +31,7 @@ final class WeatherUseCase: WeatherUseCaseProtocol {
         let result = self.weatherRepository.fetchWeather(param: param)
         switch result {
         case .success(let weather):
-            self.output?.changeWeather(weather: weather)
+            self.output?.changeWeather(info: weather)
         case .failure(let error):
             self.output?.happenedError(error: error.text)
         }

@@ -31,8 +31,9 @@ final class MainPresenter: MainPresenterProtocol {
 }
 
 extension MainPresenter: WeatherUseCaseOutput {
-    func changeWeather(weather: WeatherInfo) {
-        self.view?.changeWeather(data: WeatherDataConverter.convert(data: weather))
+    func changeWeather(info: WeatherInfo) {
+        let weatherData = WeatherDataConverter.convert(info: info)
+        self.view?.changeWeather(weatherData: weatherData)
     }
     
     func happenedError(error: String) {
