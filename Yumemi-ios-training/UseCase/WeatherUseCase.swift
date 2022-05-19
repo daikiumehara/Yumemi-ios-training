@@ -30,8 +30,8 @@ final class WeatherUseCase: WeatherUseCaseProtocol {
                                      date: Date())
         let result = self.weatherRepository.fetchWeather(param: param)
         switch result {
-        case .success(let weather):
-            self.output?.changeWeather(info: weather)
+        case .success(let info):
+            self.output?.changeWeather(info: info)
         case .failure(let error):
             self.output?.happenedError(error: error.text)
         }
