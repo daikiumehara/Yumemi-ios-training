@@ -44,12 +44,11 @@ final class WeatherRepository: WeatherRepositoryProtocol {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             decoder.dateDecodingStrategy = .iso8601
-            if let info = try? decoder.decode(InfraWeatherInfo.self,
-                                             from: data) {
-                return .success(WeatherInfoConverter.convert(info: info))
-            } else {
+            guard let info = try? decoder.decode(InfraWeatherInfo.self,
+                                             from: data) else {
                 return .failure(.missDecode)
             }
+            return .success(WeatherInfoConverter.convert(info: info))
         } catch {
             let apiError = self.convertError(error: error)
             return .failure(apiError)
