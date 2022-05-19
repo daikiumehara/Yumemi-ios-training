@@ -8,9 +8,9 @@
 import Foundation
 
 struct WeatherUIDataConverter {
-    static func convert(info: WeatherInfo) -> WeatherUIData {
-        return WeatherUIData(image: WeatherImageConverter.convert(weather: info.weather),
-                           maxTemp: info.maxTemp.description,
-                           minTemp: info.minTemp.description)
+    static func convert(weatherInfo: WeatherInfo) -> WeatherUIData {
+        return WeatherUIData(image: WeatherImageConverter.convert(weather: weatherInfo.weather),
+                           maxTemp: weatherInfo.maxTemp.description,
+                           minTemp: weatherInfo.minTemp.description)
     }
 }

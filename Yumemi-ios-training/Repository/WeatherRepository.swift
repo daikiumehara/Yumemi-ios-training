@@ -48,7 +48,7 @@ final class WeatherRepository: WeatherRepositoryProtocol {
                                              from: data) else {
                 return .failure(.missDecode)
             }
-            return .success(WeatherInfoConverter.convert(info: info))
+            return .success(WeatherInfoConverter.convert(infraWeatherInfo: info))
         } catch {
             let apiError = self.convertError(error: error)
             return .failure(apiError)
