@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct WeatherData {
+struct WeatherUIData {
     let image: UIImage
     let maxTemp: String
     let minTemp: String
