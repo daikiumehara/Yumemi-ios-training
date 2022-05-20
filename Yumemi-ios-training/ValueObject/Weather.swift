@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Weather: String {
+enum Weather: String, Codable {
     case sunny
     case cloudy
     case rainy
