@@ -8,12 +8,14 @@
 import UIKit
 
 protocol MainViewProtocol: AnyObject {
-    func changeWeather(data: WeatherData)
+    func changeWeather(weatherData: WeatherUIData)
     func showErrorAlert(message: String)
 }
 
 final class ViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var minTempLabel: UILabel!
     
     private var presenter: MainPresenterProtocol?
     
@@ -33,12 +35,14 @@ final class ViewController: UIViewController {
 
 extension ViewController: MainViewProtocol {
     func showErrorAlert(message: String) {
-        let alert = ErrorAlertGenerator.generate(message: message)
+        let alert = ErrorAlertBuilder.build(message: message)
         self.present(alert, animated: true)
     }
     
-    func changeWeather(data: WeatherData) {
-        self.weatherImageView.image = data.image
+    func changeWeather(weatherData: WeatherUIData) {
+        self.weatherImageView.image = weatherData.image
+        self.maxTempLabel.text = weatherData.maxTemp
+        self.minTempLabel.text = weatherData.minTemp
     }
 }
 
