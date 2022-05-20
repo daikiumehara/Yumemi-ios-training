@@ -46,15 +46,20 @@ final class WeatherRepository: WeatherRepositoryProtocol {
     }
     
     private func convertError(error: Error) -> APIError {
-        if let yumemiWeatherError = error as? YumemiWeatherError {
-            switch yumemiWeatherError {
-            case .invalidParameterError: return .invalidParameter
-            case .unknownError: return .unknown
-            }
+        switch error {
+        case let error as YumemiWeatherError:
+            return self.convertYumemiWeatherError(yumemiWeatherError: error)
+        case let error as APIError:
+            return error
+        default:
+            return .unexpected
         }
-        if let apiError = error as? APIError {
-            return apiError
+    }
+    
+    private func convertYumemiWeatherError(yumemiWeatherError: YumemiWeatherError) -> APIError {
+        switch yumemiWeatherError {
+        case .invalidParameterError: return .invalidParameter
+        case .unknownError: return .unknown
         }
-        return .unexpected
     }
 }
