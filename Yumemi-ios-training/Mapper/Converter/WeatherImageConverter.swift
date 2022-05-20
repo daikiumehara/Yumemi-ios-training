@@ -10,7 +10,7 @@ import UIKit
 struct WeatherImageConverter {
     static func convert(weather: Weather) -> WeatherImageData {
         switch weather {
-        case.sunny:
+        case .sunny:
             return WeatherImageData(image: #imageLiteral(resourceName: "sunny").withTintColor(.red))
         case .cloudy:
             return WeatherImageData(image: #imageLiteral(resourceName: "cloudy").withTintColor(.gray))
