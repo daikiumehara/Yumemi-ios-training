@@ -34,7 +34,7 @@ final class ViewController: UIViewController {
     }
     
     deinit {
-        print("ViewControler deinit")
+        print("ViewController deinit")
     }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
