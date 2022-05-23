@@ -29,14 +29,16 @@ final class MainPresenter: MainPresenterProtocol {
     
     func reloadAction() {
         self.view?.startIndicator()
+        self.view?.closeErrorAlert()
         self.weatherUseCase.fetchWeather()
     }
 }
 
 extension MainPresenter: WeatherUseCaseOutput {
-    func changeWeather(weather: WeatherInfo) {
+    func changeWeather(weatherInfo: WeatherInfo) {
         self.view?.stopIndicator()
-        self.view?.changeWeather(data: WeatherConverter.convert(data: weather))
+        let weatherUIData = WeatherUIDataConverter.convert(weatherInfo: weatherInfo)
+        self.view?.changeWeather(weatherUIData: weatherUIData)
     }
     
     func happenedError(error: String) {

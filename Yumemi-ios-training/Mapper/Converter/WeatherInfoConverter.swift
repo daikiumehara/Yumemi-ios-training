@@ -8,9 +8,9 @@
 import Foundation
 
 struct WeatherInfoConverter {
-    static func convert(data: InfraWeatherInfo) -> WeatherInfo {
-        return WeatherInfo(maxTemp: data.maxTemp,
-                           minTemp: data.minTemp,
-                           weather: Weather(rawValue: data.weather)!)
+    static func convert(infraWeatherInfo: InfraWeatherInfo) -> WeatherInfo {
+        return WeatherInfo(maxTemp: infraWeatherInfo.maxTemp,
+                           minTemp: infraWeatherInfo.minTemp,
+                           weather: infraWeatherInfo.weather)
     }
 }

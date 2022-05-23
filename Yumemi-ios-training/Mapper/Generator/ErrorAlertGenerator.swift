@@ -7,8 +7,8 @@
 
 import UIKit
 
-struct ErrorAlertGenerator {
-    static func generate(message: String) -> UIAlertController {
+struct ErrorAlertBuilder {
+    static func build(message: String) -> UIAlertController {
         let action = UIAlertAction(title: "OK",
                                    style: .default)
         let alert = UIAlertController(title: "エラー",

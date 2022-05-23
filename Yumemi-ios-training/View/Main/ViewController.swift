@@ -10,10 +10,11 @@ import UIKit
 protocol MainViewProtocol: AnyObject {
     func inject(presenter: MainPresenterProtocol)
     func dismiss()
-    func changeWeather(data: WeatherData)
-    func showErrorAlert(message: String)
     func startIndicator()
     func stopIndicator()
+    func changeWeather(weatherUIData: WeatherUIData)
+    func showErrorAlert(message: String)
+    func closeErrorAlert()
 }
 
 final class ViewController: UIViewController {
@@ -23,6 +24,7 @@ final class ViewController: UIViewController {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     private var presenter: MainPresenterProtocol?
+    private weak var alert: UIAlertController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,18 +67,23 @@ extension ViewController: MainViewProtocol {
     }
     
     func showErrorAlert(message: String) {
-        let alert = ErrorAlertGenerator.generate(message: message)
+        let alert = ErrorAlertBuilder.build(message: message)
+        self.alert = alert
         self.present(alert, animated: true)
     }
-    
-    func changeWeather(data: WeatherData) {
-        self.weatherImageView.image = data.imageData.image
-        self.maxTempLabel.text = data.maxTemp
-        self.minTempLabel.text = data.minTemp
+
+    func changeWeather(weatherUIData: WeatherUIData) {
+        self.weatherImageView.image = weatherUIData.image
+        self.maxTempLabel.text = weatherUIData.maxTemp
+        self.minTempLabel.text = weatherUIData.minTemp
     }
     
     func inject(presenter: MainPresenterProtocol) {
         self.presenter = presenter
+    }
+    
+    func closeErrorAlert() {
+        self.alert?.dismiss(animated: true)
     }
 }
 

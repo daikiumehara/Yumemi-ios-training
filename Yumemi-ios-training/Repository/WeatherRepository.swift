@@ -10,9 +10,9 @@ import YumemiWeather
 
 protocol WeatherRepositoryProtocol: AnyObject {
     func fetchWeather() -> Weather
-    func fetchWeather(at: String) -> Result<Weather, APIError>
-    func fetchWeather(params: SearchParameter) -> Result<WeatherInfo, APIError>
-    func syncFetchWeather(params: SearchParameter,
+    func fetchWeather(area: String) -> Result<Weather, APIError>
+    func fetchWeather(param: FetchParameter) -> Result<WeatherInfo, APIError>
+    func syncFetchWeather(param: FetchParameter,
                           completion: @escaping (Result<WeatherInfo, APIError>) -> Void)
 }
 
@@ -21,9 +21,9 @@ final class WeatherRepository: WeatherRepositoryProtocol {
         return WeatherClient.fetchWeather()
     }
     
-    func fetchWeather(at: String) -> Result<Weather, APIError> {
+    func fetchWeather(area: String) -> Result<Weather, APIError> {
         do {
-            let weather = try WeatherClient.fetchWeather(at: at)
+            let weather = try WeatherClient.fetchWeather(area: area)
             return .success(weather)
         } catch {
             let apiError = self.convertError(error: error)
@@ -31,46 +31,35 @@ final class WeatherRepository: WeatherRepositoryProtocol {
         }
     }
     
-    func fetchWeather(params: SearchParameter) -> Result<WeatherInfo, APIError> {
-        guard let params = try? JSONEncoder().encode(params),
-              let jsonString = String(data: params, encoding: .utf8) else {
+    func fetchWeather(param: FetchParameter) -> Result<WeatherInfo, APIError> {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        guard let param = try? encoder.encode(param),
+              let jsonString = String(data: param, encoding: .utf8) else {
             return .failure(.missEncode)
         }
         do {
-            guard let data = try WeatherClient.fetchWeather(jsonString: jsonString).data(using: .utf8) else {
-                return .failure(.failedGetData)
-            }
-            do {
-                let info = try JSONDecoder().decode(InfraWeatherInfo.self,
-                                                    from: data)
-                return .success(WeatherInfoConverter.convert(data: info))
-            } catch {
-                return .failure(.missDecode)
-            }
+            let infraWeatherInfo = try WeatherClient.fetchWeather(jsonString: jsonString)
+            return .success(WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo))
         } catch {
             let apiError = self.convertError(error: error)
             return .failure(apiError)
         }
     }
     
-    func syncFetchWeather(params: SearchParameter,
+    func syncFetchWeather(param: FetchParameter,
                           completion: @escaping (Result<WeatherInfo, APIError>) -> Void) {
         DispatchQueue.global().async {
-            guard let params = try? JSONEncoder().encode(params),
-                  let jsonString = String(data: params, encoding: .utf8) else {
+            let encoder = JSONEncoder()
+            encoder.dateEncodingStrategy = .iso8601
+            guard let param = try? encoder.encode(param),
+                  let jsonString = String(data: param, encoding: .utf8) else {
                 completion(.failure(.missDecode))
                 return
             }
             do {
-                let weather = try WeatherClient.syncFetchWeather(jsonString)
-                guard let data = weather.data(using: .utf8) else {
-                    return completion(.failure(.failedGetData))
-                }
-                guard let info = try? JSONDecoder().decode(InfraWeatherInfo.self,
-                                                           from: data) else {
-                    return completion(.failure(.missDecode))
-                }
-                return completion(.success(WeatherInfoConverter.convert(data: info)))
+                let infraWeatherInfo = try WeatherClient.syncFetchWeather(jsonString)
+                return completion(.success(WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)))
             } catch {
                 let apiError = self.convertError(error: error)
                 completion(.failure(apiError))
@@ -79,10 +68,18 @@ final class WeatherRepository: WeatherRepositoryProtocol {
     }
     
     private func convertError(error: Error) -> APIError {
-        guard let error = error as? YumemiWeatherError else {
+        switch error {
+        case let error as YumemiWeatherError:
+            return self.convertYumemiWeatherError(yumemiWeatherError: error)
+        case let error as APIError:
+            return error
+        default:
             return .unexpected
         }
-        switch error {
+    }
+    
+    private func convertYumemiWeatherError(yumemiWeatherError: YumemiWeatherError) -> APIError {
+        switch yumemiWeatherError {
         case .invalidParameterError: return .invalidParameter
         case .unknownError: return .unknown
         }
