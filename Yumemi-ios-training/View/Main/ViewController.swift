@@ -8,7 +8,6 @@
 import UIKit
 
 protocol MainViewProtocol: AnyObject {
-    func inject(presenter: MainPresenterProtocol)
     func dismiss()
     func changeWeather(weatherUIData: WeatherUIData)
     func showErrorAlert(message: String)
