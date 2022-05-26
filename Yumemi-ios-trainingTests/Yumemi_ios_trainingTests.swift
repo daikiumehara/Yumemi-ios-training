@@ -10,68 +10,62 @@ import XCTest
 
 class Yumemi_ios_trainingTests: XCTestCase {
     var vc: ViewController!
-    var presenter: MockMainPresenter!
+    var weatherClient: MockWeatherClient!
 
     override func setUpWithError() throws {
         vc = ViewController.instantiate()
         vc.loadViewIfNeeded()
-        presenter = MockMainPresenter()
-        vc.inject(presenter: presenter)
-        presenter.view = vc
+        weatherClient = MockWeatherClient()
+        vc.inject(presenter: DIContainer(weatherClient: self.weatherClient).getMainPresenter(view: vc))
     }
     
     func test_天気予報がsunnyだったら_画面に晴れ画像が表示されること() {
-        let data = WeatherInfo(maxTemp: 10, minTemp: 5, weather: .sunny)
-        presenter.changeWeather(weather: data)
-        let weatherData = WeatherConverter.convert(data: data)
-        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.image)
+        let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .sunny)
+        let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
+        let weatherUIData = WeatherUIDataConverter.convert(weatherInfo: weatherInfo)
         
-        presenter.data = data
+        self.weatherClient.mockInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.image)
+        XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
     }
     
     func test_天気予報がcloudyだったら_画面に曇り画像が表示されること() {
-        let data = WeatherInfo(maxTemp: 10, minTemp: 5, weather: .cloudy)
-        presenter.changeWeather(weather: data)
-        let weatherData = WeatherConverter.convert(data: data)
-        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.image)
+        let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .cloudy)
+        let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
+        let weatherUIData = WeatherUIDataConverter.convert(weatherInfo: weatherInfo)
         
-        presenter.data = data
+        self.weatherClient.mockInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.image)
+        XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
     }
     
     func test_天気予報がrainyだったら_画面に雨画像が表示されること() {
-        let data = WeatherInfo(maxTemp: 10, minTemp: 5, weather: .rainy)
-        presenter.changeWeather(weather: data)
-        let weatherData = WeatherConverter.convert(data: data)
-        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.image)
+        let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .rainy)
+        let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
+        let weatherUIData = WeatherUIDataConverter.convert(weatherInfo: weatherInfo)
         
-        presenter.data = data
+        self.weatherClient.mockInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.weatherImageView.image!, weatherData.imageData.image)
+        XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
     }
     
     func test_天気予報の最高気温がUILabelに反映されること() {
-        let data = WeatherInfo(maxTemp: 10, minTemp: 5, weather: .sunny)
-        presenter.changeWeather(weather: data)
-        let weatherData = WeatherConverter.convert(data: data)
-        XCTAssertEqual(vc.maxTempLabel.text!, weatherData.maxTemp)
+        let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .rainy)
+        let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
+        let weatherUIData = WeatherUIDataConverter.convert(weatherInfo: weatherInfo)
         
-        presenter.data = data
+        self.weatherClient.mockInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.maxTempLabel.text!, weatherData.maxTemp)
+        XCTAssertEqual(vc.maxTempLabel.text!, weatherUIData.maxTemp)
     }
     
     func test_天気予報の最低気温がUILabelに反映されること() {
-        let data = WeatherInfo(maxTemp: 10, minTemp: 5, weather: .sunny)
-        presenter.changeWeather(weather: data)
-        let weatherData = WeatherConverter.convert(data: data)
-        XCTAssertEqual(vc.minTempLabel.text!, weatherData.minTemp)
+        let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .rainy)
+        let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
+        let weatherUIData = WeatherUIDataConverter.convert(weatherInfo: weatherInfo)
         
-        presenter.data = data
+        self.weatherClient.mockInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.minTempLabel.text!, weatherData.minTemp)
+        XCTAssertEqual(vc.minTempLabel.text!, weatherUIData.minTemp)
     }
 }
