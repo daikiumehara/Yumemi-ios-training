@@ -8,18 +8,24 @@
 import Foundation
 import YumemiWeather
 
-struct WeatherClient {
-    static func fetchWeather() -> Weather {
+protocol WeatherClientProtocol {
+    func fetchWeather() -> Weather
+    func fetchWeather(area: String) throws -> Weather
+    func fetchWeather(jsonString: String) throws -> InfraWeatherInfo
+}
+
+struct WeatherClient: WeatherClientProtocol {
+    func fetchWeather() -> Weather {
         let weather = YumemiWeather.fetchWeather()
         return Weather.create(weather)
     }
     
-    static func fetchWeather(area: String) throws -> Weather {
+    func fetchWeather(area: String) throws -> Weather {
         let weather = try YumemiWeather.fetchWeather(at: area)
         return Weather.create(weather)
     }
     
-    static func fetchWeather(jsonString: String) throws -> InfraWeatherInfo {
+    func fetchWeather(jsonString: String) throws -> InfraWeatherInfo {
         let jsonString = try YumemiWeather.fetchWeather(jsonString)
         guard let data = jsonString.data(using: .utf8) else {
             throw APIError.failedGetData
