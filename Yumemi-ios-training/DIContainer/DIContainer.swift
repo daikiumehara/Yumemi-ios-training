@@ -16,9 +16,9 @@ struct DIContainer {
     }
     
     //MARK: - Presenter
-    func getMainPresenter(view: MainViewProtocol) -> MainPresenterProtocol {
+    func getMainPresenter(view: WeatherViewProtocol) -> WeatherPresenterProtocol {
         let useCase = self.makeWeatherUseCase()
-        let presenter = MainPresenter(view: view,
+        let presenter = WeatherPresenter(view: view,
                                       weatherUseCase: useCase)
         useCase.output = presenter
         return presenter
