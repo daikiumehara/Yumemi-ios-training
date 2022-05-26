@@ -28,8 +28,12 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        presenter.data = weatherInfo
+        let exp = self.getExpectation(#function)
+        presenter.exp = exp
+        weatherClient.mockInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
+        
+        wait(for: [exp], timeout: 5.0)
         XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
     }
     
@@ -38,8 +42,12 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        presenter.data = weatherInfo
+        let exp = self.getExpectation(#function)
+        presenter.exp = exp
+        weatherClient.mockInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
+        
+        wait(for: [exp], timeout: 5.0)
         XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
     }
     
@@ -48,8 +56,12 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        presenter.data = weatherInfo
+        let exp = self.getExpectation(#function)
+        presenter.exp = exp
+        weatherClient.mockInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
+        
+        wait(for: [exp], timeout: 5.0)
         XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
     }
     
@@ -58,8 +70,12 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        presenter.data = weatherInfo
+        let exp = self.getExpectation(#function)
+        presenter.exp = exp
+        weatherClient.mockInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
+        
+        wait(for: [exp], timeout: 5.0)
         XCTAssertEqual(vc.maxTempLabel.text!, weatherUIData.maxTemp)
     }
     
@@ -68,8 +84,16 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        presenter.data = weatherInfo
+        let exp = self.getExpectation(#function)
+        presenter.exp = exp
+        weatherClient.mockInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
+        
+        wait(for: [exp], timeout: 5.0)
         XCTAssertEqual(vc.minTempLabel.text!, weatherUIData.minTemp)
+    }
+    
+    private func getExpectation(_ funcName: String) -> XCTestExpectation {
+        XCTestExpectation(description: "\(funcName)のタイムアウト")
     }
 }

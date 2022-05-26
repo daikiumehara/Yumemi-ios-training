@@ -10,10 +10,12 @@ import Foundation
 
 struct MockDIContainer {
     static func getMockWeatherPresenter(view: WeatherViewProtocol, weatherClient: MockWeatherClient) -> MockWeatherPresenter {
-        return MockWeatherPresenter(view: view,
-                                    weatherUseCase: DIContainer.makeWeatherUseCase(
-                                        weatherRepository: DIContainer.makeWeatherRepository(weatherClient: weatherClient)
-                                    )
+        let useCase = DIContainer.makeWeatherUseCase(
+            weatherRepository: DIContainer.makeWeatherRepository(weatherClient: weatherClient)
         )
+        let presenter = MockWeatherPresenter(view: view,
+                                             weatherUseCase: useCase)
+        useCase.output = presenter
+        return presenter
     }
 }

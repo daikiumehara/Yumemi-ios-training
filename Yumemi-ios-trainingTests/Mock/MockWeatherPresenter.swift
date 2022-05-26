@@ -7,10 +7,12 @@
 
 import Foundation
 @testable import Yumemi_ios_training
+import XCTest
 
 final class MockWeatherPresenter: WeatherPresenterProtocol {
     weak var view: WeatherViewProtocol?
     private var weatherUseCase: WeatherUseCaseProtocol
+    var exp: XCTestExpectation!
     
     init(view: WeatherViewProtocol,
          weatherUseCase: WeatherUseCaseProtocol) {
@@ -18,19 +20,17 @@ final class MockWeatherPresenter: WeatherPresenterProtocol {
         self.weatherUseCase = weatherUseCase
     }
     
-    
-    var data: WeatherInfo!
-    
     func closeAction() {}
     
     func reloadAction() {
-        self.changeWeather(weatherInfo: self.data)
+        self.weatherUseCase.fetchWeather()
     }
 }
 
 extension MockWeatherPresenter: WeatherUseCaseOutput {
     func changeWeather(weatherInfo: WeatherInfo) {
         view?.changeWeather(weatherUIData: WeatherUIData(weatherInfo: weatherInfo))
+        exp.fulfill()
     }
     
     func happenedError(error: String) {
