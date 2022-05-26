@@ -1,6 +1,6 @@
 
 //
-//  MainPresenter.swift
+//  WeatherPresenter.swift
 //  Yumemi-ios-training
 //
 //  Created by 梅原 奈輝 on 2022/05/06.
@@ -8,23 +8,18 @@
 
 import Foundation
 
-protocol MainPresenterProtocol: AnyObject {
-    func closeAction()
+protocol WeatherPresenterProtocol: AnyObject {
     func reloadAction()
 }
 
-final class MainPresenter: MainPresenterProtocol {
-    private weak var view: MainViewProtocol?
+final class WeatherPresenter: WeatherPresenterProtocol {
+    private weak var view: WeatherViewProtocol?
     private let weatherUseCase: WeatherUseCaseProtocol
     
-    init(view: MainViewProtocol,
+    init(view: WeatherViewProtocol,
          weatherUseCase: WeatherUseCaseProtocol) {
         self.view = view
         self.weatherUseCase = weatherUseCase
-    }
-    
-    func closeAction() {
-        self.view?.dismiss()
     }
     
     func reloadAction() {
@@ -34,11 +29,10 @@ final class MainPresenter: MainPresenterProtocol {
     }
 }
 
-extension MainPresenter: WeatherUseCaseOutput {
+extension WeatherPresenter: WeatherUseCaseOutput {
     func changeWeather(weatherInfo: WeatherInfo) {
         self.view?.stopIndicator()
-        let weatherUIData = WeatherUIDataConverter.convert(weatherInfo: weatherInfo)
-        self.view?.changeWeather(weatherUIData: weatherUIData)
+        self.view?.changeWeather(weatherUIData: WeatherUIData(weatherInfo: weatherInfo))
     }
     
     func happenedError(error: String) {

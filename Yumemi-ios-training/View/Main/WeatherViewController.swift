@@ -7,8 +7,7 @@
 
 import UIKit
 
-protocol MainViewProtocol: AnyObject {
-    func inject(presenter: MainPresenterProtocol)
+protocol WeatherViewProtocol: AnyObject {
     func dismiss()
     func startIndicator()
     func stopIndicator()
@@ -17,43 +16,43 @@ protocol MainViewProtocol: AnyObject {
     func closeErrorAlert()
 }
 
-final class ViewController: UIViewController {
+final class WeatherViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
-    private var presenter: MainPresenterProtocol?
     private weak var alert: UIAlertController?
+    var presenter: WeatherPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
                                                object: nil,
                                                queue: .main) { [weak self] _ in
-            self?.presenter?.reloadAction()
+            self?.presenter.reloadAction()
         }
     }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
-        self.presenter?.closeAction()
+        self.dismiss()
     }
     
     @IBAction func onTapReloadButton(_ sender: Any) {
-        self.presenter?.reloadAction()
+        self.presenter.reloadAction()
     }
 }
 
-extension ViewController {
-    static func instantiate() -> ViewController {
-        guard let initialVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? ViewController else {
+extension WeatherViewController {
+    static func instantiate() -> WeatherViewController {
+        guard let initialVC = UIStoryboard(name: "Weather", bundle: nil).instantiateInitialViewController() as? WeatherViewController else {
             fatalError("VCが見つかりませんでした。")
         }
         return initialVC
     }
 }
 
-extension ViewController: MainViewProtocol {
+extension WeatherViewController: WeatherViewProtocol {
     func startIndicator() {
         self.indicator.startAnimating()
     }
@@ -76,10 +75,6 @@ extension ViewController: MainViewProtocol {
         self.weatherImageView.image = weatherUIData.image
         self.maxTempLabel.text = weatherUIData.maxTemp
         self.minTempLabel.text = weatherUIData.minTemp
-    }
-    
-    func inject(presenter: MainPresenterProtocol) {
-        self.presenter = presenter
     }
     
     func closeErrorAlert() {
