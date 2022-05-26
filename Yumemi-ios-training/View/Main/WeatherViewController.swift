@@ -7,18 +7,18 @@
 
 import UIKit
 
-protocol MainViewProtocol: AnyObject {
+protocol WeatherViewProtocol: AnyObject {
     func dismiss()
     func changeWeather(weatherUIData: WeatherUIData)
     func showErrorAlert(message: String)
 }
 
-final class ViewController: UIViewController {
+final class WeatherViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
     
-    private var presenter: MainPresenterProtocol?
+    private var presenter: WeatherPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,16 +33,16 @@ final class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
-    static func instantiate() -> ViewController {
-        guard let initialVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? ViewController else {
+extension WeatherViewController {
+    static func instantiate() -> WeatherViewController {
+        guard let initialVC = UIStoryboard(name: "Weather", bundle: nil).instantiateInitialViewController() as? WeatherViewController else {
             fatalError("VCが見つかりませんでした。")
         }
         return initialVC
     }
 }
 
-extension ViewController: MainViewProtocol {
+extension WeatherViewController: WeatherViewProtocol {
     func dismiss() {
         self.dismiss(animated: true)
     }
@@ -58,7 +58,7 @@ extension ViewController: MainViewProtocol {
         self.minTempLabel.text = weatherUIData.minTemp
     }
     
-    func inject(presenter: MainPresenterProtocol) {
+    func inject(presenter: WeatherPresenterProtocol) {
         self.presenter = presenter
     }
 }
