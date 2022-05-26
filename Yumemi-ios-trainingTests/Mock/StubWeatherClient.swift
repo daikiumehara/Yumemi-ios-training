@@ -8,7 +8,7 @@
 import Foundation
 @testable import Yumemi_ios_training
 
-final class MockWeatherClient: WeatherClientProtocol {
+final class StubWeatherClient: WeatherClientProtocol {
     var mockWeather: Weather!
     var mockInfraWeatherInfo: InfraWeatherInfo!
     

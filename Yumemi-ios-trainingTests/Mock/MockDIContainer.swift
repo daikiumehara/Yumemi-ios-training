@@ -9,7 +9,7 @@ import Foundation
 @testable import Yumemi_ios_training
 
 struct MockDIContainer {
-    static func getMockWeatherPresenter(view: WeatherViewProtocol, weatherClient: MockWeatherClient) -> MockWeatherPresenter {
+    static func getMockWeatherPresenter(view: WeatherViewProtocol, weatherClient: StubWeatherClient) -> MockWeatherPresenter {
         let useCase = DIContainer.makeWeatherUseCase(
             weatherRepository: DIContainer.makeWeatherRepository(weatherClient: weatherClient)
         )
