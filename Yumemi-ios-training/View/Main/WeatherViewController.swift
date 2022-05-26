@@ -18,7 +18,7 @@ final class WeatherViewController: UIViewController {
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
     
-    private var presenter: WeatherPresenterProtocol?
+    var presenter: WeatherPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +56,6 @@ extension WeatherViewController: WeatherViewProtocol {
         self.weatherImageView.image = weatherUIData.image
         self.maxTempLabel.text = weatherUIData.maxTemp
         self.minTempLabel.text = weatherUIData.minTemp
-    }
-    
-    func inject(presenter: WeatherPresenterProtocol) {
-        self.presenter = presenter
     }
 }
 
