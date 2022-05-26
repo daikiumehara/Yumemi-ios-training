@@ -9,7 +9,6 @@
 import Foundation
 
 protocol WeatherPresenterProtocol: AnyObject {
-    func closeAction()
     func reloadAction()
 }
 
@@ -21,10 +20,6 @@ final class WeatherPresenter: WeatherPresenterProtocol {
          weatherUseCase: WeatherUseCaseProtocol) {
         self.view = view
         self.weatherUseCase = weatherUseCase
-    }
-    
-    func closeAction() {
-        self.view?.dismiss()
     }
     
     func reloadAction() {

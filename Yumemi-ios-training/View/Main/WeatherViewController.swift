@@ -25,7 +25,7 @@ final class WeatherViewController: UIViewController {
     }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
-        self.presenter!.closeAction()
+        self.dismiss()
     }
     
     @IBAction func onTapReloadButton(_ sender: Any) {
