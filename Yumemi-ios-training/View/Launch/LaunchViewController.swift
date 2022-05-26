@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LaunchViewController: UIViewController {
+final class LaunchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let mainVC = ViewController.instantiate()
