@@ -55,6 +55,10 @@ extension ViewController {
     }
 }
 
+/*
+ MainViewProtocolがDelegateになっており、Presenterに処理の移譲をし、
+ 処理が完了するとPresenterからViewControllerに通知される
+ */
 extension ViewController: MainViewProtocol {
     func startIndicator() {
         self.indicator.startAnimating()
