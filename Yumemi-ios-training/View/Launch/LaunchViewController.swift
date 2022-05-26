@@ -7,13 +7,13 @@
 
 import UIKit
 
-class LaunchViewController: UIViewController {
+final class LaunchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
-        let mainVC = ViewController.instantiate()
-        mainVC.inject(presenter: DIContainer.getMainPresenter(view: mainVC))
-        mainVC.modalPresentationStyle = .fullScreen
-        self.present(mainVC, animated: true)
+        let weatherVC = WeatherViewController.instantiate()
+        weatherVC.presenter = DIContainer.getWeatherPresenter(view: weatherVC)
+        weatherVC.modalPresentationStyle = .fullScreen
+        self.present(weatherVC, animated: true)
     }
     
 }
