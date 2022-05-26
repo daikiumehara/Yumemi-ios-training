@@ -23,4 +23,9 @@ final class MockWeatherClient: WeatherClientProtocol {
     func fetchWeather(jsonString: String) throws -> InfraWeatherInfo {
         self.mockInfraWeatherInfo
     }
+    
+    func syncFetchWeather(_ jsonString: String) throws -> InfraWeatherInfo {
+        Thread.sleep(forTimeInterval: 1.0)
+        return self.mockInfraWeatherInfo
+    }
 }

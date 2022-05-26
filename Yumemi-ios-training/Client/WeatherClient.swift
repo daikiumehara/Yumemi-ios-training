@@ -12,6 +12,7 @@ protocol WeatherClientProtocol: AnyObject {
     func fetchWeather() -> Weather
     func fetchWeather(area: String) throws -> Weather
     func fetchWeather(jsonString: String) throws -> InfraWeatherInfo
+    func syncFetchWeather(_ jsonString: String) throws -> InfraWeatherInfo
 }
 
 final class WeatherClient: WeatherClientProtocol {
@@ -40,7 +41,7 @@ final class WeatherClient: WeatherClientProtocol {
         return infraWeatherInfo
     }
     
-    static func syncFetchWeather(_ jsonString: String) throws -> InfraWeatherInfo {
+    func syncFetchWeather(_ jsonString: String) throws -> InfraWeatherInfo {
         let jsonString = try YumemiWeather.syncFetchWeather(jsonString)
         guard let data = jsonString.data(using: .utf8) else {
             throw APIError.failedGetData

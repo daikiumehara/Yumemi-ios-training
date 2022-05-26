@@ -64,7 +64,7 @@ final class WeatherRepository: WeatherRepositoryProtocol {
                 return
             }
             do {
-                let infraWeatherInfo = try WeatherClient.syncFetchWeather(jsonString)
+                let infraWeatherInfo = try self.weatherClient.syncFetchWeather(jsonString)
                 return completion(.success(WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)))
             } catch {
                 let apiError = self.convertError(error: error)
