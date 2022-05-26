@@ -25,11 +25,11 @@ final class WeatherViewController: UIViewController {
     }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
-        self.presenter?.closeAction()
+        self.presenter!.closeAction()
     }
     
     @IBAction func onTapReloadButton(_ sender: Any) {
-        self.presenter?.reloadAction()
+        self.presenter!.reloadAction()
     }
 }
 
