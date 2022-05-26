@@ -19,10 +19,6 @@ final class WeatherViewController: UIViewController {
     @IBOutlet weak var minTempLabel: UILabel!
     
     var presenter: WeatherPresenterProtocol!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
         self.dismiss()
