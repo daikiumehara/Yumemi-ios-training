@@ -11,11 +11,11 @@ import XCTest
 class Yumemi_ios_trainingTests: XCTestCase {
     var vc: WeatherViewController!
     var presenter: MockWeatherPresenter!
-    var weatherClient: MockWeatherClient!
+    var weatherClient: StubWeatherClient!
     
     override func setUpWithError() throws {
         vc = WeatherViewController.instantiate()
-        weatherClient = MockWeatherClient()
+        weatherClient = StubWeatherClient()
         presenter = MockDIContainer.getMockWeatherPresenter(view: vc,
                                                             weatherClient: weatherClient)
         vc.loadViewIfNeeded()
