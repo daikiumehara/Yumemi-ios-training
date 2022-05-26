@@ -30,7 +30,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         
         let exp = self.getExpectation(#function)
         presenter.exp = exp
-        weatherClient.mockInfraWeatherInfo = infraWeatherInfo
+        weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
         
         wait(for: [exp], timeout: 5.0)
@@ -44,7 +44,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         
         let exp = self.getExpectation(#function)
         presenter.exp = exp
-        weatherClient.mockInfraWeatherInfo = infraWeatherInfo
+        weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
         
         wait(for: [exp], timeout: 5.0)
@@ -58,7 +58,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         
         let exp = self.getExpectation(#function)
         presenter.exp = exp
-        weatherClient.mockInfraWeatherInfo = infraWeatherInfo
+        weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
         
         wait(for: [exp], timeout: 5.0)
@@ -72,7 +72,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         
         let exp = self.getExpectation(#function)
         presenter.exp = exp
-        weatherClient.mockInfraWeatherInfo = infraWeatherInfo
+        weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
         
         wait(for: [exp], timeout: 5.0)
@@ -86,7 +86,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         
         let exp = self.getExpectation(#function)
         presenter.exp = exp
-        weatherClient.mockInfraWeatherInfo = infraWeatherInfo
+        weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
         
         wait(for: [exp], timeout: 5.0)

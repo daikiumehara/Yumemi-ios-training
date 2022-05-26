@@ -9,19 +9,19 @@ import Foundation
 @testable import Yumemi_ios_training
 
 final class StubWeatherClient: WeatherClientProtocol {
-    var mockWeather: Weather!
-    var mockInfraWeatherInfo: InfraWeatherInfo!
+    var dummyWeather: Weather!
+    var dummyInfraWeatherInfo: InfraWeatherInfo!
     
     func fetchWeather() -> Weather {
-        self.mockWeather
+        self.dummyWeather
     }
     
     func fetchWeather(area: String) throws -> Weather {
-        self.mockWeather
+        self.dummyWeather
     }
     
     func fetchWeather(jsonString: String) throws -> InfraWeatherInfo {
-        self.mockInfraWeatherInfo
+        self.dummyInfraWeatherInfo
     }
     
     func syncFetchWeather(_ jsonString: String) throws -> InfraWeatherInfo {
