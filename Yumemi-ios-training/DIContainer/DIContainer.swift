@@ -8,15 +8,12 @@
 import Foundation
 
 struct DIContainer {
-    static let `default` = DIContainer(weatherClient: WeatherClient())
-    private let weatherClient: WeatherClientProtocol
-    
-    init(weatherClient: WeatherClientProtocol) {
-        self.weatherClient = weatherClient
-    }
-    
     //MARK: - Presenter
+<<<<<<< HEAD
     func getMainPresenter(view: WeatherViewProtocol) -> WeatherPresenterProtocol {
+=======
+    static func getMainPresenter(view: MainViewProtocol) -> MainPresenterProtocol {
+>>>>>>> parent of 0a3c04c (mockweatherClientを使用する形にテストを変更しました)
         let useCase = self.makeWeatherUseCase()
         let presenter = WeatherPresenter(view: view,
                                       weatherUseCase: useCase)
@@ -25,12 +22,12 @@ struct DIContainer {
     }
     
     //MARK: - UseCase
-    private func makeWeatherUseCase() -> WeatherUseCaseProtocol {
+    private static func makeWeatherUseCase() -> WeatherUseCaseProtocol {
         return WeatherUseCase(weatherRepository: self.makeWeatherRepository())
     }
     
     //MARK: - Repository
-    private func makeWeatherRepository() -> WeatherRepositoryProtocol {
-        return WeatherRepository(weatherClient: self.weatherClient)
+    private static func makeWeatherRepository() -> WeatherRepositoryProtocol {
+        return WeatherRepository()
     }
 }
