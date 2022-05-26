@@ -18,7 +18,7 @@ final class WeatherViewController: UIViewController {
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
     
-    var presenter: WeatherPresenterProtocol?
+    var presenter: WeatherPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ final class WeatherViewController: UIViewController {
     }
     
     @IBAction func onTapReloadButton(_ sender: Any) {
-        self.presenter!.reloadAction()
+        self.presenter.reloadAction()
     }
 }
 
