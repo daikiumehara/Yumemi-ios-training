@@ -8,35 +8,31 @@
 import Foundation
 
 protocol WeatherUseCaseOutput: AnyObject {
-    func changeWeather(weather: WeatherInfo)
+    func changeWeather(weatherInfo: WeatherInfo)
     func happenedError(error: String)
 }
 
 protocol WeatherUseCaseProtocol: AnyObject {
-    func setOutput(_ output: WeatherUseCaseOutput)
+    var output: WeatherUseCaseOutput? { get set }
     func fetchWeather()
 }
 
 final class WeatherUseCase: WeatherUseCaseProtocol {
-    private weak var output: WeatherUseCaseOutput?
+    weak var output: WeatherUseCaseOutput?
     private let weatherRepository: WeatherRepositoryProtocol
     
     init(weatherRepository: WeatherRepositoryProtocol) {
         self.weatherRepository = weatherRepository
     }
     
-    func setOutput(_ output: WeatherUseCaseOutput) {
-        self.output = output
-    }
-    
     func fetchWeather() {
-        let params = SearchParameter(area: "tokyo",
-                                     date: "2020-04-01T12:00:00+09:00")
-        self.weatherRepository.syncFetchWeather(params: params) { result in
+        let param = FetchParameter(area: "tokyo",
+                                     date: Date())
+        self.weatherRepository.syncFetchWeather(param: param) { result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let weather):
-                    self.output?.changeWeather(weather: weather)
+                case .success(let weatherInfo):
+                    self.output?.changeWeather(weatherInfo: weatherInfo)
                 case .failure(let error):
                     self.output?.happenedError(error: error.text)
                 }

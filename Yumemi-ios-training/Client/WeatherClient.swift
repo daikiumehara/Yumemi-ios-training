@@ -8,24 +8,51 @@
 import Foundation
 import YumemiWeather
 
-struct WeatherClient {
-    static func fetchWeather() -> Weather {
+protocol WeatherClientProtocol: AnyObject {
+    func fetchWeather() -> Weather
+    func fetchWeather(area: String) throws -> Weather
+    func fetchWeather(jsonString: String) throws -> InfraWeatherInfo
+    func syncFetchWeather(_ jsonString: String) throws -> InfraWeatherInfo
+}
+
+final class WeatherClient: WeatherClientProtocol {
+    func fetchWeather() -> Weather {
         let weather = YumemiWeather.fetchWeather()
         return Weather.create(weather)
     }
     
-    static func fetchWeather(at: String) throws -> Weather {
-        let weather = try YumemiWeather.fetchWeather(at: at)
-        return Weather(rawValue: weather)!
+    func fetchWeather(area: String) throws -> Weather {
+        let weather = try YumemiWeather.fetchWeather(at: area)
+        return Weather.create(weather)
     }
     
-    static func fetchWeather(jsonString: String) throws -> String {
-        let data = try YumemiWeather.fetchWeather(jsonString)
-        return data
+    func fetchWeather(jsonString: String) throws -> InfraWeatherInfo {
+        let jsonString = try YumemiWeather.fetchWeather(jsonString)
+        guard let data = jsonString.data(using: .utf8) else {
+            throw APIError.failedGetData
+        }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+        guard let infraWeatherInfo = try? decoder.decode(InfraWeatherInfo.self,
+                                         from: data) else {
+            throw APIError.missDecode
+        }
+        return infraWeatherInfo
     }
     
-    static func syncFetchWeather(_ jsonString: String) throws -> String {
-        let data = try YumemiWeather.syncFetchWeather(jsonString)
-        return data
+    func syncFetchWeather(_ jsonString: String) throws -> InfraWeatherInfo {
+        let jsonString = try YumemiWeather.syncFetchWeather(jsonString)
+        guard let data = jsonString.data(using: .utf8) else {
+            throw APIError.failedGetData
+        }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+        guard let infraWeatherInfo = try? decoder.decode(InfraWeatherInfo.self,
+                                         from: data) else {
+            throw APIError.missDecode
+        }
+        return infraWeatherInfo
     }
 }

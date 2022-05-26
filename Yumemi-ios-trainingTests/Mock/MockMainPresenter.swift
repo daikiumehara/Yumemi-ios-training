@@ -14,13 +14,13 @@ class MockMainPresenter: MainPresenterProtocol {
     func closeAction() {}
     
     func reloadAction() {
-        self.changeWeather(weather: self.data)
+        self.changeWeather(weatherInfo: self.data)
     }
 }
 
 extension MockMainPresenter: WeatherUseCaseOutput {
-    func changeWeather(weather: WeatherInfo) {
-        view?.changeWeather(data: WeatherConverter.convert(data: weather))
+    func changeWeather(weatherInfo: WeatherInfo) {
+        view?.changeWeather(weatherUIData: WeatherUIDataConverter.convert(weatherInfo: weatherInfo))
     }
     
     func happenedError(error: String) {
