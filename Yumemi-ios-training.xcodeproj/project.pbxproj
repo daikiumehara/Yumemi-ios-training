@@ -142,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				700079512824F8BE004088F8 /* DIContainer */,
-				70B0C8C3282B937C006EA7A2 /* Extension */,
 				7000796E2828DCCE004088F8 /* UIModel */,
 				700079692828DA8B004088F8 /* InfraObject */,
 				7000795828250D91004088F8 /* Mapper */,
@@ -304,57 +303,6 @@
 				702344BD283F72B700733557 /* MockWeatherPresenter.swift */,
 				702344BF283F7DF200733557 /* MockDIContainer.swift */,
 				702344C1283F7E4E00733557 /* MockWeatherClient.swift */,
-			);
-			path = Mock;
-			sourceTree = "<group>";
-		};
-		70B0C8BC282B4AC9006EA7A2 /* Launch */ = {
-			isa = PBXGroup;
-			children = (
-				70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */,
-				70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */,
-			);
-			path = Launch;
-			sourceTree = "<group>";
-		};
-		7000795828250D91004088F8 /* Mapper */ = {
-			isa = PBXGroup;
-			children = (
-				7000795928250D98004088F8 /* Generator */,
-				7000794E2824F112004088F8 /* Converter */,
-			);
-			path = Mapper;
-			sourceTree = "<group>";
-		};
-		7000795928250D98004088F8 /* Generator */ = {
-			isa = PBXGroup;
-			children = (
-				7000795A28250DA4004088F8 /* ErrorAlertGenerator.swift */,
-			);
-			path = Generator;
-			sourceTree = "<group>";
-		};
-		700079692828DA8B004088F8 /* InfraObject */ = {
-			isa = PBXGroup;
-			children = (
-				7000796A2828DABB004088F8 /* InfraWeatherInfo.swift */,
-			);
-			path = InfraObject;
-			sourceTree = "<group>";
-		};
-		7000796E2828DCCE004088F8 /* UIModel */ = {
-			isa = PBXGroup;
-			children = (
-				7000794C2824EE1D004088F8 /* WeatherImageData.swift */,
-				7000796F2828DCE6004088F8 /* WeatherData.swift */,
-			);
-			path = UIModel;
-			sourceTree = "<group>";
-		};
-		7044B5EC282CFF1E0087AF80 /* Mock */ = {
-			isa = PBXGroup;
-			children = (
-				7044B5ED282D002B0087AF80 /* MockMainPresenter.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
