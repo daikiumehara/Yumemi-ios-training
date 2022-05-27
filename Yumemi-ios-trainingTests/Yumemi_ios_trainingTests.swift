@@ -63,7 +63,6 @@ class Yumemi_ios_trainingTests: XCTestCase {
         
         wait(for: [exp], timeout: 5.0)
         XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
-        
     }
     
     func test_天気予報の最高気温がUILabelに反映されること() {
