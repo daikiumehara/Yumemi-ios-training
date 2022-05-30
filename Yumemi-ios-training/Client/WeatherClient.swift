@@ -16,11 +16,21 @@ struct WeatherClient {
     
     static func fetchWeather(area: String) throws -> Weather {
         let weather = try YumemiWeather.fetchWeather(at: area)
-        return Weather(rawValue: weather)!
+        return Weather.create(weather)
     }
     
-    static func fetchWeather(jsonString: String) throws -> String {
-        let data = try YumemiWeather.fetchWeather(jsonString)
-        return data
+    static func fetchWeather(jsonString: String) throws -> InfraWeatherInfo {
+        let jsonString = try YumemiWeather.fetchWeather(jsonString)
+        guard let data = jsonString.data(using: .utf8) else {
+            throw APIError.failedGetData
+        }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+        guard let infraWeatherInfo = try? decoder.decode(InfraWeatherInfo.self,
+                                         from: data) else {
+            throw APIError.missDecode
+        }
+        return infraWeatherInfo
     }
 }

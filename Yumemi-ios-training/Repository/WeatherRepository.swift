@@ -37,18 +37,8 @@ final class WeatherRepository: WeatherRepositoryProtocol {
             return .failure(.missEncode)
         }
         do {
-            let weather = try WeatherClient.fetchWeather(jsonString: jsonString)
-            guard let data = weather.data(using: .utf8) else {
-                return .failure(.failedGetData)
-            }
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            decoder.dateDecodingStrategy = .iso8601
-            guard let info = try? decoder.decode(InfraWeatherInfo.self,
-                                             from: data) else {
-                return .failure(.missDecode)
-            }
-            return .success(WeatherInfoConverter.convert(infraWeatherInfo: info))
+            let infraWeatherInfo = try WeatherClient.fetchWeather(jsonString: jsonString)
+            return .success(WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo))
         } catch {
             let apiError = self.convertError(error: error)
             return .failure(apiError)
@@ -56,10 +46,18 @@ final class WeatherRepository: WeatherRepositoryProtocol {
     }
     
     private func convertError(error: Error) -> APIError {
-        guard let error = error as? YumemiWeatherError else {
+        switch error {
+        case let error as YumemiWeatherError:
+            return self.convertYumemiWeatherError(yumemiWeatherError: error)
+        case let error as APIError:
+            return error
+        default:
             return .unexpected
         }
-        switch error {
+    }
+    
+    private func convertYumemiWeatherError(yumemiWeatherError: YumemiWeatherError) -> APIError {
+        switch yumemiWeatherError {
         case .invalidParameterError: return .invalidParameter
         case .unknownError: return .unknown
         }
