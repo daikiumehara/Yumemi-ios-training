@@ -31,7 +31,6 @@
 		700079702828DCE6004088F8 /* WeatherUIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000796F2828DCE6004088F8 /* WeatherUIData.swift */; };
 		700079742828E62E004088F8 /* FetchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700079732828E62E004088F8 /* FetchParameter.swift */; };
 		702344BE283F72B700733557 /* MockWeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702344BD283F72B700733557 /* MockWeatherPresenter.swift */; };
-		702344C0283F7DF200733557 /* MockDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702344BF283F7DF200733557 /* MockDIContainer.swift */; };
 		702344C2283F7E4E00733557 /* StubWeatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702344C1283F7E4E00733557 /* StubWeatherClient.swift */; };
 		70B0C8C0282B4B60006EA7A2 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */; };
 		70B0C8C2282B4B68006EA7A2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */; };
@@ -83,7 +82,6 @@
 		7000796F2828DCE6004088F8 /* WeatherUIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUIData.swift; sourceTree = "<group>"; };
 		700079732828E62E004088F8 /* FetchParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchParameter.swift; sourceTree = "<group>"; };
 		702344BD283F72B700733557 /* MockWeatherPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWeatherPresenter.swift; sourceTree = "<group>"; };
-		702344BF283F7DF200733557 /* MockDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDIContainer.swift; sourceTree = "<group>"; };
 		702344C1283F7E4E00733557 /* StubWeatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWeatherClient.swift; sourceTree = "<group>"; };
 		70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
@@ -299,7 +297,6 @@
 			isa = PBXGroup;
 			children = (
 				702344BD283F72B700733557 /* MockWeatherPresenter.swift */,
-				702344BF283F7DF200733557 /* MockDIContainer.swift */,
 				702344C1283F7E4E00733557 /* StubWeatherClient.swift */,
 			);
 			path = Mock;
@@ -479,7 +476,6 @@
 			files = (
 				702344BE283F72B700733557 /* MockWeatherPresenter.swift in Sources */,
 				7000791F2824B67A004088F8 /* Yumemi_ios_trainingTests.swift in Sources */,
-				702344C0283F7DF200733557 /* MockDIContainer.swift in Sources */,
 				702344C2283F7E4E00733557 /* StubWeatherClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

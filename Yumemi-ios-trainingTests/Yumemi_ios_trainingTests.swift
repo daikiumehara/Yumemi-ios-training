@@ -16,8 +16,13 @@ class Yumemi_ios_trainingTests: XCTestCase {
     override func setUpWithError() throws {
         vc = WeatherViewController.instantiate()
         weatherClient = StubWeatherClient()
-        presenter = MockDIContainer.getMockWeatherPresenter(view: vc,
-                                                            weatherClient: weatherClient)
+        let useCase = DIContainer.makeWeatherUseCase(
+            weatherRepository: DIContainer.makeWeatherRepository(weatherClient: weatherClient)
+        )
+        let presenter = MockWeatherPresenter(view: vc,
+                                             weatherUseCase: useCase)
+        useCase.output = presenter
+        self.presenter = presenter
         vc.loadViewIfNeeded()
         vc.presenter = presenter
         presenter.view = vc
