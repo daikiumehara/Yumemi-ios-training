@@ -28,7 +28,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.getExpectation(#function)
+        let exp = self.makeExpectation(#function)
         presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
@@ -42,7 +42,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.getExpectation(#function)
+        let exp = self.makeExpectation(#function)
         presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
@@ -56,7 +56,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.getExpectation(#function)
+        let exp = self.makeExpectation(#function)
         presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
@@ -70,7 +70,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.getExpectation(#function)
+        let exp = self.makeExpectation(#function)
         presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
@@ -84,7 +84,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.getExpectation(#function)
+        let exp = self.makeExpectation(#function)
         presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
@@ -93,7 +93,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         XCTAssertEqual(vc.minTempLabel.text!, weatherUIData.minTemp)
     }
     
-    private func getExpectation(_ funcName: String) -> XCTestExpectation {
+    private func makeExpectation(_ funcName: String) -> XCTestExpectation {
         XCTestExpectation(description: "\(funcName)のタイムアウト")
     }
 }
