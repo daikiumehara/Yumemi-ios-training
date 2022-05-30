@@ -23,6 +23,7 @@ final class WeatherPresenter: WeatherPresenterProtocol {
     }
     
     func reloadAction() {
+        self.view?.closeErrorAlert()
         self.weatherUseCase.fetchWeather()
     }
 }

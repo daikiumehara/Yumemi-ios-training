@@ -11,6 +11,7 @@ protocol WeatherViewProtocol: AnyObject {
     func dismiss()
     func changeWeather(weatherUIData: WeatherUIData)
     func showErrorAlert(message: String)
+    func closeErrorAlert()
 }
 
 final class WeatherViewController: UIViewController {
@@ -18,7 +19,17 @@ final class WeatherViewController: UIViewController {
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
     
+    private weak var alert: UIAlertController?
     var presenter: WeatherPresenterProtocol!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
+                                               object: nil,
+                                               queue: .main) { [weak self] _ in
+            self?.presenter.reloadAction()
+        }
+    }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
         self.dismiss()
@@ -45,6 +56,7 @@ extension WeatherViewController: WeatherViewProtocol {
     
     func showErrorAlert(message: String) {
         let alert = ErrorAlertBuilder.build(message: message)
+        self.alert = alert
         self.present(alert, animated: true)
     }
     
@@ -52,6 +64,10 @@ extension WeatherViewController: WeatherViewProtocol {
         self.weatherImageView.image = weatherUIData.image
         self.maxTempLabel.text = weatherUIData.maxTemp
         self.minTempLabel.text = weatherUIData.minTemp
+    }
+    
+    func closeErrorAlert() {
+        self.alert?.dismiss(animated: true)
     }
 }
 
