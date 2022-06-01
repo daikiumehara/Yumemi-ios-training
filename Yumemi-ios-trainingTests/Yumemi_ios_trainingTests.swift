@@ -10,7 +10,7 @@ import XCTest
 
 class Yumemi_ios_trainingTests: XCTestCase {
     var vc: WeatherViewController!
-    var presenter: MockWeatherPresenter!
+    var presenter: WeatherPresenterProtocol!
     var weatherClient: StubWeatherClient!
     
     override func setUpWithError() throws {
@@ -19,26 +19,20 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let useCase = DIContainer.makeWeatherUseCase(
             weatherRepository: DIContainer.makeWeatherRepository(weatherClient: weatherClient)
         )
-        let presenter = MockWeatherPresenter(view: vc,
-                                             weatherUseCase: useCase)
-        useCase.output = presenter
-        self.presenter = presenter
+        let weatherPresenter = WeatherPresenter(view: vc,
+                                       weatherUseCase: useCase)
+        useCase.output = weatherPresenter
         vc.loadViewIfNeeded()
-        vc.presenter = presenter
-        presenter.view = vc
+        vc.presenter = weatherPresenter
     }
     
     func test_天気予報がsunnyだったら_画面に晴れ画像が表示されること() {
         let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .sunny)
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
-        
-        let exp = self.makeExpectation(#function)
-        presenter.exp = exp
+
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        
-        wait(for: [exp], timeout: 5.0)
         XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
     }
     
@@ -47,12 +41,8 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.makeExpectation(#function)
-        presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        
-        wait(for: [exp], timeout: 5.0)
         XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
     }
     
@@ -61,12 +51,8 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.makeExpectation(#function)
-        presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        
-        wait(for: [exp], timeout: 5.0)
         XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
     }
     
@@ -75,12 +61,8 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.makeExpectation(#function)
-        presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        
-        wait(for: [exp], timeout: 5.0)
         XCTAssertEqual(vc.maxTempLabel.text!, weatherUIData.maxTemp)
     }
     
@@ -89,12 +71,8 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.makeExpectation(#function)
-        presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        
-        wait(for: [exp], timeout: 5.0)
         XCTAssertEqual(vc.minTempLabel.text!, weatherUIData.minTemp)
     }
     
