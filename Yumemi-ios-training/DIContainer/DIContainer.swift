@@ -10,8 +10,8 @@ import Foundation
 struct DIContainer {
     //MARK: - Presenter
     static func getWeatherPresenter(view: WeatherViewProtocol) -> WeatherPresenterProtocol {
-        let useCase = self.makeWeatherUseCase(
-            weatherRepository: self.makeWeatherRepository(weatherClient: WeatherClient())
+        let useCase = makeWeatherUseCase(
+            weatherRepository: makeWeatherRepository(weatherClient: WeatherClient())
         )
         let presenter = WeatherPresenter(view: view,
                                       weatherUseCase: useCase)

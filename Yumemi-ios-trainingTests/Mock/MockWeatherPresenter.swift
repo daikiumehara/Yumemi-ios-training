@@ -23,7 +23,7 @@ final class MockWeatherPresenter: WeatherPresenterProtocol {
     func closeAction() {}
     
     func reloadAction() {
-        self.weatherUseCase.fetchWeather()
+        weatherUseCase.fetchWeather()
     }
 }
 

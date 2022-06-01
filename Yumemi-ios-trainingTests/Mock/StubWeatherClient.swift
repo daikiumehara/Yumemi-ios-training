@@ -13,19 +13,19 @@ final class StubWeatherClient: WeatherClientProtocol {
     var dummyInfraWeatherInfo: InfraWeatherInfo!
     
     func fetchWeather() -> Weather {
-        self.dummyWeather
+        dummyWeather
     }
     
     func fetchWeather(area: String) throws -> Weather {
-        self.dummyWeather
+        dummyWeather
     }
     
     func fetchWeather(jsonString: String) throws -> InfraWeatherInfo {
-        self.dummyInfraWeatherInfo
+        dummyInfraWeatherInfo
     }
     
     func syncFetchWeather(_ jsonString: String) throws -> InfraWeatherInfo {
         Thread.sleep(forTimeInterval: 1.0)
-        return self.dummyInfraWeatherInfo
+        return dummyInfraWeatherInfo
     }
 }

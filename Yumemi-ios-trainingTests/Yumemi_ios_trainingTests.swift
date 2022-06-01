@@ -28,7 +28,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.getExpectation(#function)
+        let exp = getExpectation(#function)
         presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
@@ -42,7 +42,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.getExpectation(#function)
+        let exp = getExpectation(#function)
         presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
@@ -56,7 +56,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.getExpectation(#function)
+        let exp = getExpectation(#function)
         presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
@@ -70,7 +70,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.getExpectation(#function)
+        let exp = getExpectation(#function)
         presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
@@ -84,7 +84,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
-        let exp = self.getExpectation(#function)
+        let exp = getExpectation(#function)
         presenter.exp = exp
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")

@@ -13,7 +13,7 @@ final class LaunchViewController: UIViewController {
         let weatherVC = WeatherViewController.instantiate()
         weatherVC.presenter = DIContainer.getWeatherPresenter(view: weatherVC)
         weatherVC.modalPresentationStyle = .fullScreen
-        self.present(weatherVC, animated: true)
+        present(weatherVC, animated: true)
     }
     
 }

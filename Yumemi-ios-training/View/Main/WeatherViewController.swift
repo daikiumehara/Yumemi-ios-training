@@ -35,11 +35,11 @@ final class WeatherViewController: UIViewController {
     }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
-        self.dismiss()
+        dismiss()
     }
     
     @IBAction func onTapReloadButton(_ sender: Any) {
-        self.presenter.reloadAction()
+        presenter.reloadAction()
     }
 }
 
@@ -54,31 +54,31 @@ extension WeatherViewController {
 
 extension WeatherViewController: WeatherViewProtocol {
     func startIndicator() {
-        self.indicator.startAnimating()
+        indicator.startAnimating()
     }
     
     func stopIndicator() {
-        self.indicator.stopAnimating()
+        indicator.stopAnimating()
     }
     
     func dismiss() {
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
     
     func showErrorAlert(message: String) {
         let alert = ErrorAlertBuilder.build(message: message)
         self.alert = alert
-        self.present(alert, animated: true)
+        present(alert, animated: true)
     }
 
     func changeWeather(weatherUIData: WeatherUIData) {
-        self.weatherImageView.image = weatherUIData.image
-        self.maxTempLabel.text = weatherUIData.maxTemp
-        self.minTempLabel.text = weatherUIData.minTemp
+        weatherImageView.image = weatherUIData.image
+        maxTempLabel.text = weatherUIData.maxTemp
+        minTempLabel.text = weatherUIData.minTemp
     }
     
     func closeErrorAlert() {
-        self.alert?.dismiss(animated: true)
+        alert?.dismiss(animated: true)
     }
 }
 
