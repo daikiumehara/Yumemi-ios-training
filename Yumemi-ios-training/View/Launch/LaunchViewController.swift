@@ -11,7 +11,7 @@ final class LaunchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let weatherVC = WeatherViewController.instantiate()
-        weatherVC.presenter = DIContainer.getWeatherPresenter(view: weatherVC)
+        weatherVC.presenter = DIContainer.getWeatherPresenter(view: weatherVC, weatherClient: WeatherClient())
         weatherVC.modalPresentationStyle = .fullScreen
         present(weatherVC, animated: true)
     }
