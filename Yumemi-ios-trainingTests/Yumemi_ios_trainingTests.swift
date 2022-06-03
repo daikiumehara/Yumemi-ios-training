@@ -71,8 +71,4 @@ class Yumemi_ios_trainingTests: XCTestCase {
         vc.onTapReloadButton("")
         XCTAssertEqual(vc.minTempLabel.text!, weatherUIData.minTemp)
     }
-    
-    private func makeExpectation(_ funcName: String) -> XCTestExpectation {
-        XCTestExpectation(description: "\(funcName)のタイムアウト")
-    }
 }
