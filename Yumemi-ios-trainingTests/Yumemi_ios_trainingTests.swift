@@ -51,7 +51,7 @@ class Yumemi_ios_trainingTests: XCTestCase {
         
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.maxTempLabel.text!, "10")
+        XCTAssertEqual(vc.maxTempLabel.text, "10")
     }
     
     func test_天気予報の最低気温がUILabelに反映されること() {
@@ -59,6 +59,6 @@ class Yumemi_ios_trainingTests: XCTestCase {
         
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.minTempLabel.text!, "5")
+        XCTAssertEqual(vc.minTempLabel.text, "5")
     }
 }
