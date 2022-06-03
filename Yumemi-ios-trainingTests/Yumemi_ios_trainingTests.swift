@@ -13,58 +13,52 @@ class Yumemi_ios_trainingTests: XCTestCase {
     var weatherClient = StubWeatherClient()
     
     override func setUpWithError() throws {
-        _ = DIContainer.getWeatherPresenter(view: vc,
-                                            weatherClient: weatherClient)
+        let weatherPresenter = DIContainer.getWeatherPresenter(view: vc,
+                                                               weatherClient: weatherClient)
+        vc.presenter = weatherPresenter
         vc.loadViewIfNeeded()
     }
     
     func test_天気予報がsunnyだったら_画面に晴れ画像が表示されること() {
         let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .sunny)
-        let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
-        let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
+        XCTAssertEqual(vc.weatherImageView.image!,
+                       #imageLiteral(resourceName: "sunny").withTintColor(.red))
     }
     
     func test_天気予報がcloudyだったら_画面に曇り画像が表示されること() {
         let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .cloudy)
-        let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
-        let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
+        XCTAssertEqual(vc.weatherImageView.image!,
+                       #imageLiteral(resourceName: "cloudy").withTintColor(.gray))
     }
     
     func test_天気予報がrainyだったら_画面に雨画像が表示されること() {
         let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .rainy)
-        let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
-        let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
+        XCTAssertEqual(vc.weatherImageView.image!,
+                       #imageLiteral(resourceName: "rainy").withTintColor(.blue))
     }
     
     func test_天気予報の最高気温がUILabelに反映されること() {
         let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .rainy)
-        let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
-        let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.maxTempLabel.text!, weatherUIData.maxTemp)
+        XCTAssertEqual(vc.maxTempLabel.text!, "10")
     }
     
     func test_天気予報の最低気温がUILabelに反映されること() {
         let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .rainy)
-        let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
-        let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
         
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
-        XCTAssertEqual(vc.minTempLabel.text!, weatherUIData.minTemp)
+        XCTAssertEqual(vc.minTempLabel.text!, "5")
     }
 }
