@@ -9,24 +9,20 @@ import XCTest
 @testable import Yumemi_ios_training
 
 class Yumemi_ios_trainingTests: XCTestCase {
-    var vc: WeatherViewController!
-    var presenter: WeatherPresenterProtocol!
-    var weatherClient: StubWeatherClient!
+    var vc = WeatherViewController.instantiate()
+    var weatherClient = StubWeatherClient()
     
     override func setUpWithError() throws {
-        vc = WeatherViewController.instantiate()
-        weatherClient = StubWeatherClient()
-        let weatherPresenter = DIContainer.getWeatherPresenter(view: vc,
-                                                               weatherClient: weatherClient)
+        _ = DIContainer.getWeatherPresenter(view: vc,
+                                            weatherClient: weatherClient)
         vc.loadViewIfNeeded()
-        vc.presenter = weatherPresenter
     }
     
     func test_天気予報がsunnyだったら_画面に晴れ画像が表示されること() {
         let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .sunny)
         let weatherInfo = WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)
         let weatherUIData = WeatherUIData(weatherInfo: weatherInfo)
-
+        
         weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
         vc.onTapReloadButton("")
         XCTAssertEqual(vc.weatherImageView.image!, weatherUIData.image)
