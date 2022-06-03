@@ -21,11 +21,11 @@ struct DIContainer {
     
     //MARK: - UseCase
     private static func makeWeatherUseCase(weatherRepository: WeatherRepositoryProtocol) -> WeatherUseCaseProtocol {
-        return WeatherUseCase(weatherRepository: weatherRepository)
+        WeatherUseCase(weatherRepository: weatherRepository)
     }
     
     //MARK: - Repository
     private static func makeWeatherRepository(weatherClient: WeatherClientProtocol) -> WeatherRepositoryProtocol {
-        return WeatherRepository(weatherClient: weatherClient)
+        WeatherRepository(weatherClient: weatherClient)
     }
 }
