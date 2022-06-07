@@ -9,20 +9,20 @@ import Foundation
 import YumemiWeather
 
 protocol WeatherClientProtocol: AnyObject {
-    func fetchWeather() -> Weather
+    func fetchWeather() throws -> Weather
     func fetchWeather(area: String) throws -> Weather
     func fetchWeather(jsonString: String) throws -> InfraWeatherInfo
 }
 
 final class WeatherClient: WeatherClientProtocol {
-    func fetchWeather() -> Weather {
+    func fetchWeather() throws -> Weather {
         let weather = YumemiWeather.fetchWeather()
-        return Weather.create(weather)
+        return try Weather.create(weather)
     }
     
     func fetchWeather(area: String) throws -> Weather {
         let weather = try YumemiWeather.fetchWeather(at: area)
-        return Weather.create(weather)
+        return try Weather.create(weather)
     }
     
     func fetchWeather(jsonString: String) throws -> InfraWeatherInfo {
