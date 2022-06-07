@@ -9,7 +9,7 @@ import Foundation
 import YumemiWeather
 
 protocol WeatherRepositoryProtocol: AnyObject {
-    func fetchWeather() -> Weather
+    func fetchWeather() -> Result<Weather, APIError>
     func fetchWeather(area: String) -> Result<Weather, APIError>
     func fetchWeather(param: FetchParameter) -> Result<WeatherInfo, APIError>
     func syncFetchWeather(param: FetchParameter,
@@ -23,8 +23,14 @@ final class WeatherRepository: WeatherRepositoryProtocol {
         self.weatherClient = weatherClient
     }
     
-    func fetchWeather() -> Weather {
-        weatherClient.fetchWeather()
+    func fetchWeather() -> Result<Weather, APIError> {
+        do {
+            let weather = try weatherClient.fetchWeather()
+            return .success(weather)
+        } catch {
+            let apiError = convertError(error: error)
+            return .failure(apiError)
+        }
     }
     
     func fetchWeather(area: String) -> Result<Weather, APIError> {
