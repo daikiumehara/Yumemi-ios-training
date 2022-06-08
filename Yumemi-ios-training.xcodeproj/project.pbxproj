@@ -160,6 +160,7 @@
 		7000791D2824B67A004088F8 /* Yumemi-ios-trainingTests */ = {
 			isa = PBXGroup;
 			children = (
+				702344F52850EB2000733557 /* Stub */,
 				702344BC283F728E00733557 /* Mock */,
 				7000791E2824B67A004088F8 /* Yumemi_ios_trainingTests.swift */,
 			);
@@ -296,10 +297,17 @@
 		702344BC283F728E00733557 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				702344C1283F7E4E00733557 /* StubWeatherClient.swift */,
 				702344D62849DDD800733557 /* MockWeatherPresenter.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		702344F52850EB2000733557 /* Stub */ = {
+			isa = PBXGroup;
+			children = (
+				702344C1283F7E4E00733557 /* StubWeatherClient.swift */,
+			);
+			path = Stub;
 			sourceTree = "<group>";
 		};
 		70B0C8BC282B4AC9006EA7A2 /* Launch */ = {

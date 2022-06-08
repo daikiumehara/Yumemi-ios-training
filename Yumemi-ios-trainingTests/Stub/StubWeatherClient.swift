@@ -1,5 +1,5 @@
 //
-//  MockWeatherClient.swift
+//  StubWeatherClient.swift
 //  Yumemi-ios-trainingTests
 //
 //  Created by 梅原 奈輝 on 2022/05/26.
@@ -16,11 +16,11 @@ final class StubWeatherClient: WeatherClientProtocol {
         dummyWeather
     }
     
-    func fetchWeather(area: String) throws -> Weather {
+    func fetchWeather(area: String) -> Weather {
         dummyWeather
     }
     
-    func fetchWeather(jsonString: String) throws -> InfraWeatherInfo {
+    func fetchWeather(jsonString: String) -> InfraWeatherInfo {
         dummyInfraWeatherInfo
     }
     
