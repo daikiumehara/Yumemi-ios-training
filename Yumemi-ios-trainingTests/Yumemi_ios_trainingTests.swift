@@ -9,28 +9,56 @@ import XCTest
 @testable import Yumemi_ios_training
 
 class Yumemi_ios_trainingTests: XCTestCase {
-
+    var vc = WeatherViewController.instantiate()
+    var weatherClient = StubWeatherClient()
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let weatherPresenter = DIContainer.getWeatherPresenter(view: vc,
+                                                               weatherClient: weatherClient)
+        vc.presenter = weatherPresenter
+        vc.loadViewIfNeeded()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func test_天気予報がsunnyだったら_画面に晴れ画像が表示されること() {
+        let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .sunny)
+        
+        weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
+        vc.onTapReloadButton("")
+        XCTAssertEqual(vc.weatherImageView.image!,
+                       #imageLiteral(resourceName: "sunny").withTintColor(.red))
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_天気予報がcloudyだったら_画面に曇り画像が表示されること() {
+        let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .cloudy)
+        
+        weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
+        vc.onTapReloadButton("")
+        XCTAssertEqual(vc.weatherImageView.image!,
+                       #imageLiteral(resourceName: "cloudy").withTintColor(.gray))
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_天気予報がrainyだったら_画面に雨画像が表示されること() {
+        let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .rainy)
+        
+        weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
+        vc.onTapReloadButton("")
+        XCTAssertEqual(vc.weatherImageView.image!,
+                       #imageLiteral(resourceName: "rainy").withTintColor(.blue))
     }
-
+    
+    func test_天気予報の最高気温がUILabelに反映されること() {
+        let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .rainy)
+        
+        weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
+        vc.onTapReloadButton("")
+        XCTAssertEqual(vc.maxTempLabel.text, "10")
+    }
+    
+    func test_天気予報の最低気温がUILabelに反映されること() {
+        let infraWeatherInfo = InfraWeatherInfo(maxTemp: 10, minTemp: 5, date: Date(), weather: .rainy)
+        
+        weatherClient.dummyInfraWeatherInfo = infraWeatherInfo
+        vc.onTapReloadButton("")
+        XCTAssertEqual(vc.minTempLabel.text, "5")
+    }
 }

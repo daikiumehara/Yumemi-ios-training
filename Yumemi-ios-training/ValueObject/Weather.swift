@@ -11,11 +11,10 @@ enum Weather: String, Codable {
     case sunny
     case cloudy
     case rainy
-    case none
     
-    static func create(_ weatherString: String) -> Weather {
+    static func create(_ weatherString: String) throws -> Weather {
         guard let weather = Weather(rawValue: weatherString) else {
-            return .none
+            throw APIError.missDecode
         }
         return weather
     }

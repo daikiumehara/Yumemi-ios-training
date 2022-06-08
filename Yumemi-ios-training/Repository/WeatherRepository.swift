@@ -9,19 +9,31 @@ import Foundation
 import YumemiWeather
 
 protocol WeatherRepositoryProtocol: AnyObject {
-    func fetchWeather() -> Weather
+    func fetchWeather() -> Result<Weather, APIError>
     func fetchWeather(area: String) -> Result<Weather, APIError>
     func fetchWeather(param: FetchParameter) -> Result<WeatherInfo, APIError>
 }
 
 final class WeatherRepository: WeatherRepositoryProtocol {
-    func fetchWeather() -> Weather {
-        return WeatherClient.fetchWeather()
+    private let weatherClient: WeatherClientProtocol
+    
+    init(weatherClient: WeatherClientProtocol) {
+        self.weatherClient = weatherClient
+    }
+    
+    func fetchWeather() -> Result<Weather, APIError> {
+        do {
+            let weather = try weatherClient.fetchWeather()
+            return .success(weather)
+        } catch {
+            let apiError = convertError(error: error)
+            return .failure(apiError)
+        }
     }
     
     func fetchWeather(area: String) -> Result<Weather, APIError> {
         do {
-            let weather = try WeatherClient.fetchWeather(area: area)
+            let weather = try self.weatherClient.fetchWeather(area: area)
             return .success(weather)
         } catch {
             let apiError = self.convertError(error: error)
@@ -37,7 +49,7 @@ final class WeatherRepository: WeatherRepositoryProtocol {
             return .failure(.missEncode)
         }
         do {
-            let infraWeatherInfo = try WeatherClient.fetchWeather(jsonString: jsonString)
+            let infraWeatherInfo = try self.weatherClient.fetchWeather(jsonString: jsonString)
             return .success(WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo))
         } catch {
             let apiError = self.convertError(error: error)

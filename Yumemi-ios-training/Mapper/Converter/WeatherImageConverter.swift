@@ -16,9 +16,6 @@ struct WeatherImageConverter {
             return #imageLiteral(resourceName: "cloudy").withTintColor(.gray)
         case .rainy:
             return #imageLiteral(resourceName: "rainy").withTintColor(.blue)
-        case .none:
-            // 画像がないので一旦sunnyのgrayを返す
-            return #imageLiteral(resourceName: "sunny").withTintColor(.gray)
         }
     }
 }
