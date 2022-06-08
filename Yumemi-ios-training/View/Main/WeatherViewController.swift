@@ -70,7 +70,7 @@ extension WeatherViewController: WeatherViewProtocol {
         self.alert = alert
         present(alert, animated: true)
     }
-
+    
     func changeWeather(weatherUIData: WeatherUIData) {
         weatherImageView.image = weatherUIData.image
         maxTempLabel.text = weatherUIData.maxTemp
