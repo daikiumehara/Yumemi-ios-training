@@ -25,7 +25,6 @@ final class StubWeatherClient: WeatherClientProtocol {
     }
     
     func syncFetchWeather(_ jsonString: String) throws -> InfraWeatherInfo {
-        Thread.sleep(forTimeInterval: 1.0)
-        return dummyInfraWeatherInfo
+        dummyInfraWeatherInfo
     }
 }
