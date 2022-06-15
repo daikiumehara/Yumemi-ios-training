@@ -14,6 +14,7 @@ protocol WeatherViewProtocol: AnyObject {
     func changeWeather(weatherUIData: WeatherUIData)
     func showErrorAlert(message: String)
     func closeErrorAlert()
+    func enableReloadButton()
 }
 
 final class WeatherViewController: UIViewController {
@@ -21,6 +22,7 @@ final class WeatherViewController: UIViewController {
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var reloadButton: UIButton!
     
     private weak var alert: UIAlertController?
     var presenter: WeatherPresenterProtocol!
@@ -39,6 +41,7 @@ final class WeatherViewController: UIViewController {
     }
     
     @IBAction func onTapReloadButton(_ sender: Any) {
+        reloadButton.isEnabled = false
         presenter.reloadAction()
     }
 }
@@ -79,6 +82,10 @@ extension WeatherViewController: WeatherViewProtocol {
     
     func closeErrorAlert() {
         alert?.dismiss(animated: true)
+    }
+    
+    func enableReloadButton() {
+        reloadButton.isEnabled = true
     }
 }
 

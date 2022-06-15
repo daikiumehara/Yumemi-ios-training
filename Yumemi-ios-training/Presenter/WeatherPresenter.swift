@@ -32,11 +32,13 @@ final class WeatherPresenter: WeatherPresenterProtocol {
 extension WeatherPresenter: WeatherUseCaseOutput {
     func changeWeather(weatherInfo: WeatherInfo) {
         view?.stopIndicator()
+        view?.enableReloadButton()
         view?.changeWeather(weatherUIData: WeatherUIData(weatherInfo: weatherInfo))
     }
     
     func happenedError(error: String) {
         view?.stopIndicator()
+        view?.enableReloadButton()
         view?.showErrorAlert(message: error)
     }
 }

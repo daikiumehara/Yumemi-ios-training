@@ -89,6 +89,7 @@
                         <outlet property="indicator" destination="ZmU-Mh-ALy" id="npC-H1-ryQ"/>
                         <outlet property="maxTempLabel" destination="P1k-se-fQG" id="dmz-zJ-g8A"/>
                         <outlet property="minTempLabel" destination="WEx-m2-8V3" id="WDN-LA-cer"/>
+                        <outlet property="reloadButton" destination="SwP-oB-tqd" id="sI0-j3-wTE"/>
                         <outlet property="weatherImageView" destination="J3L-fI-7KU" id="nk4-kQ-RVo"/>
                     </connections>
                 </viewController>
