@@ -21,7 +21,8 @@ struct DIContainer {
     
     //MARK: - UseCase
     private static func makeWeatherUseCase(weatherRepository: WeatherRepositoryProtocol) -> WeatherUseCaseProtocol {
-        WeatherUseCase(weatherRepository: weatherRepository)
+        WeatherUseCase(weatherRepository: weatherRepository,
+                       callbackQueue: .main)
     }
     
     //MARK: - Repository
