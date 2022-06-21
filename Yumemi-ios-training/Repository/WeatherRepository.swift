@@ -61,18 +61,19 @@ final class WeatherRepository: WeatherRepositoryProtocol {
     
     func syncFetchWeather(param: FetchParameter,
                           completion: @escaping (Result<WeatherInfo, APIError>) -> Void) {
-        DispatchQueue.global().async {
-            let encoder = JSONEncoder()
-            encoder.dateEncodingStrategy = .iso8601
-            guard let param = try? encoder.encode(param),
-                  let jsonString = String(data: param, encoding: .utf8) else {
-                completion(.failure(.missDecode))
-                return
-            }
-            do {
-                let infraWeatherInfo = try self.weatherClient.syncFetchWeather(jsonString)
-                return completion(.success(WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)))
-            } catch {
+        
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        guard let param = try? encoder.encode(param),
+              let jsonString = String(data: param, encoding: .utf8) else {
+            completion(.failure(.missDecode))
+            return
+        }
+        weatherClient.syncFetchWeather(jsonString) { result in
+            switch result {
+            case .success(let infraWeatherInfo):
+                completion(.success(WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo)))
+            case .failure(let error):
                 let apiError = self.convertError(error: error)
                 completion(.failure(apiError))
             }
