@@ -11,26 +11,22 @@ import XCTest
 
 final class MockWeatherPresenter: WeatherPresenterProtocol {
     weak var view: WeatherViewProtocol?
-    private var weatherUseCase: WeatherUseCaseProtocol
-    var exp: XCTestExpectation!
+    var weatherInfo: WeatherInfo!
     
-    init(view: WeatherViewProtocol,
-         weatherUseCase: WeatherUseCaseProtocol) {
+    init(view: WeatherViewProtocol) {
         self.view = view
-        self.weatherUseCase = weatherUseCase
     }
     
     func closeAction() {}
     
     func reloadAction() {
-        weatherUseCase.fetchWeather()
+        changeWeather(weatherInfo: weatherInfo)
     }
 }
 
 extension MockWeatherPresenter: WeatherUseCaseOutput {
     func changeWeather(weatherInfo: WeatherInfo) {
         view?.changeWeather(weatherUIData: WeatherUIData(weatherInfo: weatherInfo))
-        exp.fulfill()
     }
     
     func happenedError(error: String) {
