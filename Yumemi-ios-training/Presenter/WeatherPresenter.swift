@@ -29,6 +29,10 @@ final class WeatherPresenter: WeatherPresenterProtocol {
     }
 }
 
+/*
+ WeatherUseCaseOutputがDelegateになっており、UseCaseに処理の委譲をし、
+ 処理が完了するとUseCaseからPresenterに通知される仕組みになっている
+ */
 extension WeatherPresenter: WeatherUseCaseOutput {
     func changeWeather(weatherInfo: WeatherInfo) {
         view?.stopIndicator()
