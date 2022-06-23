@@ -35,6 +35,10 @@ final class WeatherViewController: UIViewController {
             self?.presenter.reloadAction()
         }
     }
+    
+    deinit {
+        print("ViewController deinit")
+    }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
         dismiss()
