@@ -66,7 +66,7 @@ final class WeatherRepository: WeatherRepositoryProtocol {
         encoder.dateEncodingStrategy = .iso8601
         guard let param = try? encoder.encode(param),
               let jsonString = String(data: param, encoding: .utf8) else {
-            completion(.failure(.missDecode))
+            completion(.failure(.missEncode))
             return
         }
         weatherClient.syncFetchWeather(jsonString) { result in
