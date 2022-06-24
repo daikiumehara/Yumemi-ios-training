@@ -10,10 +10,12 @@ import UIKit
 final class LaunchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
-        let weatherVC = WeatherViewController.instantiate()
-        weatherVC.presenter = DIContainer.getWeatherPresenter(view: weatherVC, weatherClient: WeatherClient())
-        weatherVC.modalPresentationStyle = .fullScreen
-        present(weatherVC, animated: true)
+        let listVC = WeatherListViewController.instantiate()
+        listVC.modalPresentationStyle = .fullScreen
+        listVC.repository = DIContainer.makeWeatherRepository()
+        let navigationVC = UINavigationController(rootViewController: listVC)
+        navigationVC.modalPresentationStyle = .fullScreen
+        present(navigationVC, animated: true)
     }
     
 }
