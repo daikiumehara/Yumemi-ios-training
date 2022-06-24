@@ -37,6 +37,7 @@
 		70E6CFD8286589EE00DCC45D /* InfraAreaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFD7286589EE00DCC45D /* InfraAreaInfo.swift */; };
 		70E6CFDA28658A1F00DCC45D /* AreaInfoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFD928658A1F00DCC45D /* AreaInfoConverter.swift */; };
 		70E6CFDC28658A6800DCC45D /* AreaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFDB28658A6800DCC45D /* AreaInfo.swift */; };
+		70E6CFDE28658AF300DCC45D /* ListFetchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFDD28658AF300DCC45D /* ListFetchParameter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		70E6CFD7286589EE00DCC45D /* InfraAreaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfraAreaInfo.swift; sourceTree = "<group>"; };
 		70E6CFD928658A1F00DCC45D /* AreaInfoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaInfoConverter.swift; sourceTree = "<group>"; };
 		70E6CFDB28658A6800DCC45D /* AreaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaInfo.swift; sourceTree = "<group>"; };
+		70E6CFDD28658AF300DCC45D /* ListFetchParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFetchParameter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +246,7 @@
 				700079672828DA7F004088F8 /* WeatherInfo.swift */,
 				700079732828E62E004088F8 /* FetchParameter.swift */,
 				70E6CFDB28658A6800DCC45D /* AreaInfo.swift */,
+				70E6CFDD28658AF300DCC45D /* ListFetchParameter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				700079702828DCE6004088F8 /* WeatherUIData.swift in Sources */,
 				7000793F2824C6C1004088F8 /* Weather.swift in Sources */,
 				70007957282509F4004088F8 /* APIError.swift in Sources */,
+				70E6CFDE28658AF300DCC45D /* ListFetchParameter.swift in Sources */,
 				7000796B2828DABB004088F8 /* InfraWeatherInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
