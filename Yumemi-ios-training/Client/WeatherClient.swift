@@ -13,6 +13,7 @@ protocol WeatherClientProtocol: AnyObject {
     func fetchWeather(area: String) throws -> Weather
     func fetchWeather(jsonString: String) throws -> InfraWeatherInfo
     func syncFetchWeather(_ jsonString: String) async throws -> InfraWeatherInfo
+    func syncFetchWeatherList(_ jsonString: String) async throws -> [InfraAreaInfo]
 }
 
 final class WeatherClient: WeatherClientProtocol {
@@ -42,17 +43,48 @@ final class WeatherClient: WeatherClientProtocol {
     }
     
     func syncFetchWeather(_ jsonString: String) async throws -> InfraWeatherInfo {
-        let jsonString = try YumemiWeather.syncFetchWeather(jsonString)
-        guard let data = jsonString.data(using: .utf8) else {
-            throw APIError.failedGetData
+        try await withCheckedThrowingContinuation { continuation in
+            DispatchQueue.global().async {
+                do {
+                    let jsonString = try YumemiWeather.syncFetchWeather(jsonString)
+                    guard let data = jsonString.data(using: .utf8) else {
+                        throw APIError.failedGetData
+                    }
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    decoder.dateDecodingStrategy = .iso8601
+                    guard let infraWeatherInfo = try? decoder.decode(InfraWeatherInfo.self,
+                                                                     from: data) else {
+                        throw APIError.missDecode
+                    }
+                    continuation.resume(with: .success(infraWeatherInfo))
+                } catch {
+                    continuation.resume(with: .failure(error))
+                }
+            }
         }
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
-        guard let infraWeatherInfo = try? decoder.decode(InfraWeatherInfo.self,
-                                                         from: data) else {
-            throw APIError.missDecode
+    }
+    
+    func syncFetchWeatherList(_ jsonString: String) async throws -> [InfraAreaInfo] {
+        try await withCheckedThrowingContinuation { continuation in
+            DispatchQueue.global().async {
+                do {
+                    let jsonString = try YumemiWeather.syncFetchWeatherList(jsonString)
+                    guard let data = jsonString.data(using: .utf8) else {
+                        throw APIError.failedGetData
+                    }
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    decoder.dateDecodingStrategy = .iso8601
+                    guard let infraAreaInfoList = try? decoder.decode([InfraAreaInfo].self,
+                                                                      from: data) else {
+                        throw APIError.missDecode
+                    }
+                    continuation.resume(with: .success(infraAreaInfoList))
+                } catch {
+                    continuation.resume(with: .failure(error))
+                }
+            }
         }
-        return infraWeatherInfo
     }
 }
