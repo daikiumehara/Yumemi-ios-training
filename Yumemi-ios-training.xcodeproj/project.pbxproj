@@ -35,6 +35,7 @@
 		70B0C8C2282B4B68006EA7A2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */; };
 		70BAA565283B4FC50034F789 /* WeatherInfoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BAA564283B4FC50034F789 /* WeatherInfoConverter.swift */; };
 		70E6CFD8286589EE00DCC45D /* InfraAreaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFD7286589EE00DCC45D /* InfraAreaInfo.swift */; };
+		70E6CFDA28658A1F00DCC45D /* AreaInfoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFD928658A1F00DCC45D /* AreaInfoConverter.swift */; };
 		70E6CFDC28658A6800DCC45D /* AreaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFDB28658A6800DCC45D /* AreaInfo.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		70BAA564283B4FC50034F789 /* WeatherInfoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoConverter.swift; sourceTree = "<group>"; };
 		70E6CFD7286589EE00DCC45D /* InfraAreaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfraAreaInfo.swift; sourceTree = "<group>"; };
+		70E6CFD928658A1F00DCC45D /* AreaInfoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaInfoConverter.swift; sourceTree = "<group>"; };
 		70E6CFDB28658A6800DCC45D /* AreaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -251,6 +253,7 @@
 			children = (
 				7000794F2824F11D004088F8 /* WeatherImageConverter.swift */,
 				70BAA564283B4FC50034F789 /* WeatherInfoConverter.swift */,
+				70E6CFD928658A1F00DCC45D /* AreaInfoConverter.swift */,
 			);
 			path = Converter;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				7000794A2824E79E004088F8 /* WeatherUseCase.swift in Sources */,
 				700079482824E78F004088F8 /* WeatherRepository.swift in Sources */,
 				70E6CFDC28658A6800DCC45D /* AreaInfo.swift in Sources */,
+				70E6CFDA28658A1F00DCC45D /* AreaInfoConverter.swift in Sources */,
 				70BAA565283B4FC50034F789 /* WeatherInfoConverter.swift in Sources */,
 				7000790C2824B678004088F8 /* WeatherViewController.swift in Sources */,
 				7000795B28250DA4004088F8 /* ErrorAlertBuilder.swift in Sources */,
