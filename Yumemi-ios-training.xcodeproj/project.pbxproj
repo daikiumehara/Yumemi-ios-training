@@ -38,6 +38,7 @@
 		70E6CFDA28658A1F00DCC45D /* AreaInfoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFD928658A1F00DCC45D /* AreaInfoConverter.swift */; };
 		70E6CFDC28658A6800DCC45D /* AreaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFDB28658A6800DCC45D /* AreaInfo.swift */; };
 		70E6CFDE28658AF300DCC45D /* ListFetchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFDD28658AF300DCC45D /* ListFetchParameter.swift */; };
+		70E6CFE028658B4000DCC45D /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFDF28658B4000DCC45D /* AreaData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		70E6CFD928658A1F00DCC45D /* AreaInfoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaInfoConverter.swift; sourceTree = "<group>"; };
 		70E6CFDB28658A6800DCC45D /* AreaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaInfo.swift; sourceTree = "<group>"; };
 		70E6CFDD28658AF300DCC45D /* ListFetchParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFetchParameter.swift; sourceTree = "<group>"; };
+		70E6CFDF28658B4000DCC45D /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				7000796F2828DCE6004088F8 /* WeatherUIData.swift */,
+				70E6CFDF28658B4000DCC45D /* AreaData.swift */,
 			);
 			path = UIModel;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				700079482824E78F004088F8 /* WeatherRepository.swift in Sources */,
 				70E6CFDC28658A6800DCC45D /* AreaInfo.swift in Sources */,
 				70E6CFDA28658A1F00DCC45D /* AreaInfoConverter.swift in Sources */,
+				70E6CFE028658B4000DCC45D /* AreaData.swift in Sources */,
 				70BAA565283B4FC50034F789 /* WeatherInfoConverter.swift in Sources */,
 				7000790C2824B678004088F8 /* WeatherViewController.swift in Sources */,
 				7000795B28250DA4004088F8 /* ErrorAlertBuilder.swift in Sources */,
