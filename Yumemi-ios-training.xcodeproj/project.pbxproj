@@ -39,6 +39,7 @@
 		70E6CFDC28658A6800DCC45D /* AreaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFDB28658A6800DCC45D /* AreaInfo.swift */; };
 		70E6CFDE28658AF300DCC45D /* ListFetchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFDD28658AF300DCC45D /* ListFetchParameter.swift */; };
 		70E6CFE028658B4000DCC45D /* AreaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFDF28658B4000DCC45D /* AreaData.swift */; };
+		70E6CFE228658B9F00DCC45D /* AreaConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E6CFE128658B9F00DCC45D /* AreaConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		70E6CFDB28658A6800DCC45D /* AreaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaInfo.swift; sourceTree = "<group>"; };
 		70E6CFDD28658AF300DCC45D /* ListFetchParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFetchParameter.swift; sourceTree = "<group>"; };
 		70E6CFDF28658B4000DCC45D /* AreaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaData.swift; sourceTree = "<group>"; };
+		70E6CFE128658B9F00DCC45D /* AreaConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 				7000794F2824F11D004088F8 /* WeatherImageConverter.swift */,
 				70BAA564283B4FC50034F789 /* WeatherInfoConverter.swift */,
 				70E6CFD928658A1F00DCC45D /* AreaInfoConverter.swift */,
+				70E6CFE128658B9F00DCC45D /* AreaConverter.swift */,
 			);
 			path = Converter;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				70007957282509F4004088F8 /* APIError.swift in Sources */,
 				70E6CFDE28658AF300DCC45D /* ListFetchParameter.swift in Sources */,
 				7000796B2828DABB004088F8 /* InfraWeatherInfo.swift in Sources */,
+				70E6CFE228658B9F00DCC45D /* AreaConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
