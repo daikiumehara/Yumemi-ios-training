@@ -36,7 +36,7 @@ final class WeatherClient: WeatherClientProtocol {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
         guard let infraWeatherInfo = try? decoder.decode(InfraWeatherInfo.self,
-                                         from: data) else {
+                                                         from: data) else {
             throw APIError.missDecode
         }
         return infraWeatherInfo
@@ -54,7 +54,7 @@ final class WeatherClient: WeatherClientProtocol {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 decoder.dateDecodingStrategy = .iso8601
                 guard let infraWeatherInfo = try? decoder.decode(InfraWeatherInfo.self,
-                                                 from: data) else {
+                                                                 from: data) else {
                     throw APIError.missDecode
                 }
                 completion(.success(infraWeatherInfo))
