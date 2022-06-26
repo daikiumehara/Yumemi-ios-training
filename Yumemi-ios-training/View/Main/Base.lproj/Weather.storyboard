@@ -22,6 +22,9 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J3L-fI-7KU">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="207"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="WeatherImageView">
+                                            <bool key="isElement" value="NO"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="J3L-fI-7KU" secondAttribute="height" multiplier="1:1" id="gnj-Kk-ZmL"/>
                                         </constraints>
@@ -31,12 +34,14 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1k-se-fQG">
                                                 <rect key="frame" x="0.0" y="0.0" width="103.5" height="20.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="MaxTempLabel"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="Blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEx-m2-8V3">
                                                 <rect key="frame" x="103.5" y="0.0" width="103.5" height="20.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="MinTempLabel"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="Red"/>
                                                 <nil key="highlightedColor"/>
@@ -53,6 +58,7 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SwP-oB-tqd">
                                 <rect key="frame" x="224.5" y="642" width="68.5" height="31"/>
+                                <accessibility key="accessibilityConfiguration" identifier="ReloadButton"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Reload"/>
                                 <connections>
@@ -85,6 +91,9 @@
                             <constraint firstItem="1GI-cd-e8U" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="wQY-LD-Z9k"/>
                         </constraints>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="WeatherViewController"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="indicator" destination="ZmU-Mh-ALy" id="npC-H1-ryQ"/>
                         <outlet property="maxTempLabel" destination="P1k-se-fQG" id="dmz-zJ-g8A"/>
