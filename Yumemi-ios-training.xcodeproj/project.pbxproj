@@ -30,7 +30,7 @@
 		7000796B2828DABB004088F8 /* InfraWeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000796A2828DABB004088F8 /* InfraWeatherInfo.swift */; };
 		700079702828DCE6004088F8 /* WeatherUIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000796F2828DCE6004088F8 /* WeatherUIData.swift */; };
 		700079742828E62E004088F8 /* FetchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700079732828E62E004088F8 /* FetchParameter.swift */; };
-		702344D72849DDD800733557 /* MockWeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702344D62849DDD800733557 /* MockWeatherPresenter.swift */; };
+		704E001E2868D33100D9AC98 /* MockWeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702344D62849DDD800733557 /* MockWeatherPresenter.swift */; };
 		70B0C8C0282B4B60006EA7A2 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */; };
 		70B0C8C2282B4B68006EA7A2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */; };
 		70BAA565283B4FC50034F789 /* WeatherInfoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BAA564283B4FC50034F789 /* WeatherInfoConverter.swift */; };
@@ -135,6 +135,7 @@
 		700079062824B678004088F8 /* Yumemi-ios-training */ = {
 			isa = PBXGroup;
 			children = (
+				702344BC283F728E00733557 /* Mock */,
 				700079512824F8BE004088F8 /* DIContainer */,
 				7000796E2828DCCE004088F8 /* UIModel */,
 				700079692828DA8B004088F8 /* InfraObject */,
@@ -158,7 +159,6 @@
 		7000791D2824B67A004088F8 /* Yumemi-ios-trainingTests */ = {
 			isa = PBXGroup;
 			children = (
-				702344BC283F728E00733557 /* Mock */,
 				7000791E2824B67A004088F8 /* Yumemi_ios_trainingTests.swift */,
 			);
 			path = "Yumemi-ios-trainingTests";
@@ -464,6 +464,7 @@
 				7000793F2824C6C1004088F8 /* Weather.swift in Sources */,
 				70007957282509F4004088F8 /* APIError.swift in Sources */,
 				7000796B2828DABB004088F8 /* InfraWeatherInfo.swift in Sources */,
+				704E001E2868D33100D9AC98 /* MockWeatherPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,7 +473,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7000791F2824B67A004088F8 /* Yumemi_ios_trainingTests.swift in Sources */,
-				702344D72849DDD800733557 /* MockWeatherPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
