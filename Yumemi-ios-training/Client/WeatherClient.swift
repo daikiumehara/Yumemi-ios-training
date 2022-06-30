@@ -12,8 +12,7 @@ protocol WeatherClientProtocol: AnyObject {
     func fetchWeather() throws -> Weather
     func fetchWeather(area: String) throws -> Weather
     func fetchWeather(jsonString: String) throws -> InfraWeatherInfo
-    func syncFetchWeather(_ jsonString: String,
-                          completion: @escaping (Result<InfraWeatherInfo, Error>) -> Void)
+    func syncFetchWeather(_ jsonString: String) async throws -> InfraWeatherInfo
 }
 
 final class WeatherClient: WeatherClientProtocol {
@@ -42,25 +41,18 @@ final class WeatherClient: WeatherClientProtocol {
         return infraWeatherInfo
     }
     
-    func syncFetchWeather(_ jsonString: String,
-                          completion: @escaping (Result<InfraWeatherInfo, Error>) -> Void) {
-        DispatchQueue.global().async {
-            do {
-                let jsonString = try YumemiWeather.syncFetchWeather(jsonString)
-                guard let data = jsonString.data(using: .utf8) else {
-                    throw APIError.failedGetData
-                }
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                decoder.dateDecodingStrategy = .iso8601
-                guard let infraWeatherInfo = try? decoder.decode(InfraWeatherInfo.self,
-                                                                 from: data) else {
-                    throw APIError.missDecode
-                }
-                completion(.success(infraWeatherInfo))
-            } catch {
-                completion(.failure(error))
-            }
+    func syncFetchWeather(_ jsonString: String) async throws -> InfraWeatherInfo {
+        let jsonString = try YumemiWeather.syncFetchWeather(jsonString)
+        guard let data = jsonString.data(using: .utf8) else {
+            throw APIError.failedGetData
         }
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+        guard let infraWeatherInfo = try? decoder.decode(InfraWeatherInfo.self,
+                                                         from: data) else {
+            throw APIError.missDecode
+        }
+        return infraWeatherInfo
     }
 }
