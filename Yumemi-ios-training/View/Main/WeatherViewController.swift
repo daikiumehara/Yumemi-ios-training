@@ -35,6 +35,10 @@ final class WeatherViewController: UIViewController {
             self?.presenter.reloadAction()
         }
     }
+    
+    deinit {
+        print("ViewController deinit")
+    }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
         dismiss()
@@ -55,6 +59,10 @@ extension WeatherViewController {
     }
 }
 
+/*
+ MainViewProtocolがDelegateになっており、Presenterに処理の移譲をし、
+ 処理が完了するとPresenterからViewControllerに通知される
+ */
 extension WeatherViewController: WeatherViewProtocol {
     func startIndicator() {
         indicator.startAnimating()
