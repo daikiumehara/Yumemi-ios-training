@@ -13,8 +13,8 @@ struct WeatherUIData {
     let minTemp: String
     
     init(weatherInfo: WeatherInfo) {
-        self.image = WeatherImageConverter.convert(weather: weatherInfo.weather)
-        self.maxTemp = weatherInfo.maxTemp.description
-        self.minTemp = weatherInfo.minTemp.description
+        image = WeatherImageConverter.convert(weather: weatherInfo.weather)
+        maxTemp = weatherInfo.maxTemp.description
+        minTemp = weatherInfo.minTemp.description
     }
 }

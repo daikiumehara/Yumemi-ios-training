@@ -9,15 +9,20 @@ import UIKit
 
 protocol WeatherViewProtocol: AnyObject {
     func dismiss()
+    func startIndicator()
+    func stopIndicator()
     func changeWeather(weatherUIData: WeatherUIData)
     func showErrorAlert(message: String)
     func closeErrorAlert()
+    func enableReloadButton()
 }
 
 final class WeatherViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var reloadButton: UIButton!
     
     private weak var alert: UIAlertController?
     var presenter: WeatherPresenterProtocol!
@@ -32,11 +37,12 @@ final class WeatherViewController: UIViewController {
     }
 
     @IBAction func onTapCloseButton(_ sender: Any) {
-        self.dismiss()
+        dismiss()
     }
     
     @IBAction func onTapReloadButton(_ sender: Any) {
-        self.presenter.reloadAction()
+        reloadButton.isEnabled = false
+        presenter.reloadAction()
     }
 }
 
@@ -50,24 +56,36 @@ extension WeatherViewController {
 }
 
 extension WeatherViewController: WeatherViewProtocol {
+    func startIndicator() {
+        indicator.startAnimating()
+    }
+    
+    func stopIndicator() {
+        indicator.stopAnimating()
+    }
+    
     func dismiss() {
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
     
     func showErrorAlert(message: String) {
         let alert = ErrorAlertBuilder.build(message: message)
         self.alert = alert
-        self.present(alert, animated: true)
+        present(alert, animated: true)
     }
     
     func changeWeather(weatherUIData: WeatherUIData) {
-        self.weatherImageView.image = weatherUIData.image
-        self.maxTempLabel.text = weatherUIData.maxTemp
-        self.minTempLabel.text = weatherUIData.minTemp
+        weatherImageView.image = weatherUIData.image
+        maxTempLabel.text = weatherUIData.maxTemp
+        minTempLabel.text = weatherUIData.minTemp
     }
     
     func closeErrorAlert() {
-        self.alert?.dismiss(animated: true)
+        alert?.dismiss(animated: true)
+    }
+    
+    func enableReloadButton() {
+        reloadButton.isEnabled = true
     }
 }
 

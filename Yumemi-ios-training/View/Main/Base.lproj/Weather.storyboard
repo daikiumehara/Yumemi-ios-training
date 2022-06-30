@@ -67,10 +67,15 @@
                                     <action selector="onTapCloseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kgf-i6-xxV"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ZmU-Mh-ALy">
+                                <rect key="frame" x="188.5" y="592" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ZmU-Mh-ALy" firstAttribute="centerX" secondItem="J3L-fI-7KU" secondAttribute="centerX" id="9kQ-wo-evW"/>
+                            <constraint firstItem="ZmU-Mh-ALy" firstAttribute="top" secondItem="1GI-cd-e8U" secondAttribute="bottom" constant="30" id="JUT-IT-FKG"/>
                             <constraint firstItem="SwP-oB-tqd" firstAttribute="centerX" secondItem="WEx-m2-8V3" secondAttribute="centerX" id="SYp-7G-h7r"/>
                             <constraint firstItem="1GI-cd-e8U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cZb-AJ-YNL"/>
                             <constraint firstItem="1XZ-2I-0rk" firstAttribute="centerX" secondItem="P1k-se-fQG" secondAttribute="centerX" id="jAV-us-9YY"/>
@@ -81,8 +86,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="indicator" destination="ZmU-Mh-ALy" id="npC-H1-ryQ"/>
                         <outlet property="maxTempLabel" destination="P1k-se-fQG" id="dmz-zJ-g8A"/>
                         <outlet property="minTempLabel" destination="WEx-m2-8V3" id="WDN-LA-cer"/>
+                        <outlet property="reloadButton" destination="SwP-oB-tqd" id="sI0-j3-wTE"/>
                         <outlet property="weatherImageView" destination="J3L-fI-7KU" id="nk4-kQ-RVo"/>
                     </connections>
                 </viewController>

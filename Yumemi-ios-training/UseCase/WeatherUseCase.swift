@@ -19,21 +19,27 @@ protocol WeatherUseCaseProtocol: AnyObject {
 
 final class WeatherUseCase: WeatherUseCaseProtocol {
     weak var output: WeatherUseCaseOutput?
+    private let callbackQueue: DispatchQueue
     private let weatherRepository: WeatherRepositoryProtocol
     
-    init(weatherRepository: WeatherRepositoryProtocol) {
+    init(weatherRepository: WeatherRepositoryProtocol,
+         callbackQueue: DispatchQueue) {
         self.weatherRepository = weatherRepository
+        self.callbackQueue = callbackQueue
     }
     
     func fetchWeather() {
         let param = FetchParameter(area: "tokyo",
                                      date: Date())
-        let result = self.weatherRepository.fetchWeather(param: param)
-        switch result {
-        case .success(let info):
-            self.output?.changeWeather(weatherInfo: info)
-        case .failure(let error):
-            self.output?.happenedError(error: error.text)
+        weatherRepository.syncFetchWeather(param: param) { result in
+            self.callbackQueue.async {
+                switch result {
+                case .success(let weatherInfo):
+                    self.output?.changeWeather(weatherInfo: weatherInfo)
+                case .failure(let error):
+                    self.output?.happenedError(error: error.text)
+                }
+            }
         }
     }
 }
