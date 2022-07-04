@@ -28,7 +28,6 @@
 		7000796B2828DABB004088F8 /* InfraWeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000796A2828DABB004088F8 /* InfraWeatherInfo.swift */; };
 		700079702828DCE6004088F8 /* WeatherUIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7000796F2828DCE6004088F8 /* WeatherUIData.swift */; };
 		700079742828E62E004088F8 /* FetchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700079732828E62E004088F8 /* FetchParameter.swift */; };
-		702344D72849DDD800733557 /* MockWeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702344D62849DDD800733557 /* MockWeatherPresenter.swift */; };
 		704E001528658F9B00D9AC98 /* EmptyDataTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E001328658F9B00D9AC98 /* EmptyDataTableCell.swift */; };
 		704E001628658F9B00D9AC98 /* EmptyDataTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704E001428658F9B00D9AC98 /* EmptyDataTableCell.xib */; };
 		705E205B28727640005C6BA4 /* WeatherTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705E205A28727640005C6BA4 /* WeatherTableCell.xib */; };
@@ -88,7 +87,6 @@
 		7000796A2828DABB004088F8 /* InfraWeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfraWeatherInfo.swift; sourceTree = "<group>"; };
 		7000796F2828DCE6004088F8 /* WeatherUIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUIData.swift; sourceTree = "<group>"; };
 		700079732828E62E004088F8 /* FetchParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchParameter.swift; sourceTree = "<group>"; };
-		702344D62849DDD800733557 /* MockWeatherPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWeatherPresenter.swift; sourceTree = "<group>"; };
 		704E001328658F9B00D9AC98 /* EmptyDataTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataTableCell.swift; sourceTree = "<group>"; };
 		704E001428658F9B00D9AC98 /* EmptyDataTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyDataTableCell.xib; sourceTree = "<group>"; };
 		705E205A28727640005C6BA4 /* WeatherTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableCell.xib; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 		7000791D2824B67A004088F8 /* Yumemi-ios-trainingTests */ = {
 			isa = PBXGroup;
 			children = (
-				702344BC283F728E00733557 /* Mock */,
 				7000791E2824B67A004088F8 /* Yumemi_ios_trainingTests.swift */,
 			);
 			path = "Yumemi-ios-trainingTests";
@@ -299,14 +296,6 @@
 				70E6CFDF28658B4000DCC45D /* AreaData.swift */,
 			);
 			path = UIModel;
-			sourceTree = "<group>";
-		};
-		702344BC283F728E00733557 /* Mock */ = {
-			isa = PBXGroup;
-			children = (
-				702344D62849DDD800733557 /* MockWeatherPresenter.swift */,
-			);
-			path = Mock;
 			sourceTree = "<group>";
 		};
 		704E00192865925700D9AC98 /* WeatherList */ = {
@@ -512,7 +501,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7000791F2824B67A004088F8 /* Yumemi_ios_trainingTests.swift in Sources */,
-				702344D72849DDD800733557 /* MockWeatherPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
