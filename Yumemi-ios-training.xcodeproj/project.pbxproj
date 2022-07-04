@@ -33,6 +33,8 @@
 		704E001628658F9B00D9AC98 /* EmptyDataTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 704E001428658F9B00D9AC98 /* EmptyDataTableCell.xib */; };
 		705E205B28727640005C6BA4 /* WeatherTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705E205A28727640005C6BA4 /* WeatherTableCell.xib */; };
 		705E205D2872764B005C6BA4 /* WeatherTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E205C2872764B005C6BA4 /* WeatherTableCell.swift */; };
+		705E205F28727801005C6BA4 /* WeatherListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E205E28727801005C6BA4 /* WeatherListViewController.swift */; };
+		705E20612872780B005C6BA4 /* WeatherList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 705E20602872780B005C6BA4 /* WeatherList.storyboard */; };
 		70B0C8C0282B4B60006EA7A2 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */; };
 		70B0C8C2282B4B68006EA7A2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */; };
 		70BAA565283B4FC50034F789 /* WeatherInfoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BAA564283B4FC50034F789 /* WeatherInfoConverter.swift */; };
@@ -91,6 +93,8 @@
 		704E001428658F9B00D9AC98 /* EmptyDataTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyDataTableCell.xib; sourceTree = "<group>"; };
 		705E205A28727640005C6BA4 /* WeatherTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableCell.xib; sourceTree = "<group>"; };
 		705E205C2872764B005C6BA4 /* WeatherTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableCell.swift; sourceTree = "<group>"; };
+		705E205E28727801005C6BA4 /* WeatherListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewController.swift; sourceTree = "<group>"; };
+		705E20602872780B005C6BA4 /* WeatherList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WeatherList.storyboard; sourceTree = "<group>"; };
 		70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		70BAA564283B4FC50034F789 /* WeatherInfoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoConverter.swift; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 		700079402824E38C004088F8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				704E00192865925700D9AC98 /* WeatherList */,
 				70E6CFE528658E1500DCC45D /* TableVIewCell */,
 				70B0C8BC282B4AC9006EA7A2 /* Launch */,
 				700079412824E396004088F8 /* Main */,
@@ -302,6 +307,15 @@
 				702344D62849DDD800733557 /* MockWeatherPresenter.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		704E00192865925700D9AC98 /* WeatherList */ = {
+			isa = PBXGroup;
+			children = (
+				705E205E28727801005C6BA4 /* WeatherListViewController.swift */,
+				705E20602872780B005C6BA4 /* WeatherList.storyboard */,
+			);
+			path = WeatherList;
 			sourceTree = "<group>";
 		};
 		70B0C8BC282B4AC9006EA7A2 /* Launch */ = {
@@ -439,6 +453,7 @@
 				700079112824B67A004088F8 /* Assets.xcassets in Resources */,
 				704E001628658F9B00D9AC98 /* EmptyDataTableCell.xib in Resources */,
 				7000790F2824B678004088F8 /* Weather.storyboard in Resources */,
+				705E20612872780B005C6BA4 /* WeatherList.storyboard in Resources */,
 				70B0C8C2282B4B68006EA7A2 /* Launch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +479,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				705E205F28727801005C6BA4 /* WeatherListViewController.swift in Sources */,
 				700079682828DA7F004088F8 /* WeatherInfo.swift in Sources */,
 				700079482824E78F004088F8 /* WeatherRepository.swift in Sources */,
 				70E6CFDC28658A6800DCC45D /* AreaInfo.swift in Sources */,
