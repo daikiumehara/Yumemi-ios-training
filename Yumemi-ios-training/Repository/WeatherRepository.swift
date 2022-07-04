@@ -13,6 +13,7 @@ protocol WeatherRepositoryProtocol: AnyObject {
     func fetchWeather(area: String) -> Result<Weather, APIError>
     func fetchWeather(param: FetchParameter) -> Result<WeatherInfo, APIError>
     func syncFetchWeather(param: FetchParameter) async -> Result<WeatherInfo, APIError>
+    func syncFetchWeatherList(param: ListFetchParameter) async -> Result<[AreaInfo], APIError>
 }
 
 final class WeatherRepository: WeatherRepositoryProtocol {
@@ -68,6 +69,22 @@ final class WeatherRepository: WeatherRepositoryProtocol {
         do {
             let infraWeatherInfo = try await weatherClient.syncFetchWeather(jsonString)
             return .success(WeatherInfoConverter.convert(infraWeatherInfo: infraWeatherInfo))
+        } catch {
+            let apiError = convertError(error: error)
+            return .failure(apiError)
+        }
+    }
+    
+    func syncFetchWeatherList(param: ListFetchParameter) async -> Result<[AreaInfo], APIError> {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        guard let param = try? encoder.encode(param),
+              let jsonString = String(data: param, encoding: .utf8) else {
+            return .failure(.missEncode)
+        }
+        do {
+            let infraAreaInfoList = try await weatherClient.syncFetchWeatherList(jsonString)
+            return .success(AreaInfoConverter.convert(infraAreaInfoList: infraAreaInfoList))
         } catch {
             let apiError = convertError(error: error)
             return .failure(apiError)
