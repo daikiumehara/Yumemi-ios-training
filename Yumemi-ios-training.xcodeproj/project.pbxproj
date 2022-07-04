@@ -34,6 +34,7 @@
 		705E205D2872764B005C6BA4 /* WeatherTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E205C2872764B005C6BA4 /* WeatherTableCell.swift */; };
 		705E205F28727801005C6BA4 /* WeatherListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E205E28727801005C6BA4 /* WeatherListViewController.swift */; };
 		705E20612872780B005C6BA4 /* WeatherList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 705E20602872780B005C6BA4 /* WeatherList.storyboard */; };
+		705E205128726A04005C6BA4 /* StubWeatherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E205028726A04005C6BA4 /* StubWeatherClient.swift */; };
 		70B0C8C0282B4B60006EA7A2 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */; };
 		70B0C8C2282B4B68006EA7A2 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */; };
 		70BAA565283B4FC50034F789 /* WeatherInfoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BAA564283B4FC50034F789 /* WeatherInfoConverter.swift */; };
@@ -93,6 +94,7 @@
 		705E205C2872764B005C6BA4 /* WeatherTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableCell.swift; sourceTree = "<group>"; };
 		705E205E28727801005C6BA4 /* WeatherListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewController.swift; sourceTree = "<group>"; };
 		705E20602872780B005C6BA4 /* WeatherList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WeatherList.storyboard; sourceTree = "<group>"; };
+		705E205028726A04005C6BA4 /* StubWeatherClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWeatherClient.swift; sourceTree = "<group>"; };
 		70B0C8BF282B4B60006EA7A2 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		70B0C8C1282B4B68006EA7A2 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		70BAA564283B4FC50034F789 /* WeatherInfoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoConverter.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				7000791E2824B67A004088F8 /* Yumemi_ios_trainingTests.swift */,
+				705E205028726A04005C6BA4 /* StubWeatherClient.swift */,
 			);
 			path = "Yumemi-ios-trainingTests";
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7000791F2824B67A004088F8 /* Yumemi_ios_trainingTests.swift in Sources */,
+				705E205128726A04005C6BA4 /* StubWeatherClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
