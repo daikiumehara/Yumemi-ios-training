@@ -7,16 +7,6 @@
 
 import UIKit
 
-protocol WeatherViewProtocol: AnyObject {
-    func dismiss()
-    func startIndicator()
-    func stopIndicator()
-    func changeWeather(weatherUIData: WeatherUIData)
-    func showErrorAlert(message: String)
-    func closeErrorAlert()
-    func enableReloadButton()
-}
-
 final class WeatherViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var maxTempLabel: UILabel!
@@ -25,15 +15,19 @@ final class WeatherViewController: UIViewController {
     @IBOutlet weak var reloadButton: UIButton!
     
     private weak var alert: UIAlertController?
-    var presenter: WeatherPresenterProtocol!
+    private var area: String!
+    private var weatherData: WeatherUIData!
+    var repository: WeatherRepositoryProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
                                                object: nil,
                                                queue: .main) { [weak self] _ in
-            self?.presenter.reloadAction()
+            self?.fetchWeather()
         }
+        title = area
+        changeWeather(weatherUIData: weatherData)
     }
     
     deinit {
@@ -46,54 +40,59 @@ final class WeatherViewController: UIViewController {
     
     @IBAction func onTapReloadButton(_ sender: Any) {
         reloadButton.isEnabled = false
-        presenter.reloadAction()
-    }
-}
-
-extension WeatherViewController {
-    static func instantiate() -> WeatherViewController {
-        guard let initialVC = UIStoryboard(name: "Weather", bundle: nil).instantiateInitialViewController() as? WeatherViewController else {
-            fatalError("VCが見つかりませんでした。")
-        }
-        return initialVC
-    }
-}
-
-/*
- MainViewProtocolがDelegateになっており、Presenterに処理の移譲をし、
- 処理が完了するとPresenterからViewControllerに通知される
- */
-extension WeatherViewController: WeatherViewProtocol {
-    func startIndicator() {
-        indicator.startAnimating()
+        fetchWeather()
     }
     
-    func stopIndicator() {
-        indicator.stopAnimating()
+    private func dismiss() {
+        navigationController?.popViewController(animated: true)
     }
     
-    func dismiss() {
-        dismiss(animated: true)
-    }
-    
-    func showErrorAlert(message: String) {
+    private func showErrorAlert(message: String) {
         let alert = ErrorAlertBuilder.build(message: message)
         self.alert = alert
         present(alert, animated: true)
     }
     
-    func changeWeather(weatherUIData: WeatherUIData) {
+    private func fetchWeather() {
+        indicator.startAnimating()
+        closeErrorAlert()
+        Task {
+            let result = await self.repository.syncFetchWeather(param: FetchParameter(area: self.area,
+                                                                                      date: Date()))
+            self.indicator.stopAnimating()
+            self.enableReloadButton()
+            switch result {
+            case .success(let weatherInfo):
+                self.changeWeather(weatherUIData: WeatherUIData(weatherInfo: weatherInfo))
+            case .failure(let error):
+                self.showErrorAlert(message: error.text)
+            }
+        }
+    }
+    
+    private func changeWeather(weatherUIData: WeatherUIData) {
+        weatherData = weatherUIData
         weatherImageView.image = weatherUIData.image
         maxTempLabel.text = weatherUIData.maxTemp
         minTempLabel.text = weatherUIData.minTemp
     }
     
-    func closeErrorAlert() {
+    private func closeErrorAlert() {
         alert?.dismiss(animated: true)
     }
     
-    func enableReloadButton() {
+    private func enableReloadButton() {
         reloadButton.isEnabled = true
     }
 }
 
+extension WeatherViewController {
+    static func instantiate(areaData: AreaData) -> WeatherViewController {
+        guard let initialVC = UIStoryboard(name: "Weather", bundle: nil).instantiateInitialViewController() as? WeatherViewController else {
+            fatalError("VCが見つかりませんでした。")
+        }
+        initialVC.area = areaData.area
+        initialVC.weatherData = areaData.weatherUIData
+        return initialVC
+    }
+}
