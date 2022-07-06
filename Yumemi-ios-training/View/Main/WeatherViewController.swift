@@ -26,6 +26,7 @@ final class WeatherViewController: UIViewController {
                                                queue: .main) { [weak self] _ in
             self?.fetchWeather()
         }
+        title = area
         changeWeather(weatherUIData: weatherData)
     }
     
