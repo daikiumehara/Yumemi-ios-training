@@ -79,7 +79,7 @@ extension WeatherListViewController {
 
 extension WeatherListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.setSelected(false, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         guard let data = list?[indexPath.row] else { return }
         let weatherVC = WeatherViewController.instantiate(areaData: data)
         weatherVC.repository = DIContainer.makeWeatherRepository()
