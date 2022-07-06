@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct InfraAreaInfo: Codable {
+struct InfraAreaInfo: Decodable {
     let area: String
     let weatherInfo: InfraWeatherInfo
 
