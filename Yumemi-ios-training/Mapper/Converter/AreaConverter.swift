@@ -8,7 +8,7 @@
 import Foundation
 
 struct AreaConverter {
-    static func convert(areaInfo: AreaInfo) -> AreaData {
+    static private func convert(areaInfo: AreaInfo) -> AreaData {
         AreaData(weatherUIData: WeatherUIData(weatherInfo: areaInfo.weatherInfo),
                  area: areaInfo.area)
     }
