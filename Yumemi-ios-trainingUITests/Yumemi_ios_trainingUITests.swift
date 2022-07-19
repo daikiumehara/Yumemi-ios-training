@@ -26,8 +26,22 @@ class Yumemi_ios_trainingUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        app.launchArguments = ["UITEST"]
+        app.launch()
+        
+        let reloadButton = app.buttons["ReloadButton"]
+        reloadButton.tap()
+        
+//        let screenshot = try app.images["WeatherImageView"].screenshot()
+//        let image = UIImage(named: "sunny")!.withTintColor(.red)
+//        XCTAssertEqual(screenshot.pngRepresentation, image.pngData()!)
+        
+        let maxTempLabel = app.staticTexts["MaxTempLabel"]
+        XCTAssertEqual(maxTempLabel.label, "20")
+        
+        let minTempLabel = app.staticTexts["MinTempLabel"]
+        XCTAssertEqual(minTempLabel.label, "10")
     }
 
     func testLaunchPerformance() throws {

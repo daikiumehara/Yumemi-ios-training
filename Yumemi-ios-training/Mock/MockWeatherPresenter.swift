@@ -6,8 +6,6 @@
 //
 
 import Foundation
-@testable import Yumemi_ios_training
-import XCTest
 
 final class MockWeatherPresenter: WeatherPresenterProtocol {
     weak var view: WeatherViewProtocol?

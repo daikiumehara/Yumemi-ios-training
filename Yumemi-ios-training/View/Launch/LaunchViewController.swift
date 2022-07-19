@@ -11,7 +11,14 @@ final class LaunchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let weatherVC = WeatherViewController.instantiate()
-        weatherVC.presenter = DIContainer.getWeatherPresenter(view: weatherVC, weatherClient: WeatherClient())
+        if ProcessInfo.processInfo.arguments.contains("UITEST") {
+            // UI Testの場合
+            let presenter = MockWeatherPresenter(view: weatherVC)
+            presenter.weatherInfo = WeatherInfo(maxTemp: 20, minTemp: 10, weather: .sunny)
+            weatherVC.presenter = presenter
+        } else {
+            weatherVC.presenter = DIContainer.getWeatherPresenter(view: weatherVC, weatherClient: WeatherClient())
+        }
         weatherVC.modalPresentationStyle = .fullScreen
         present(weatherVC, animated: true)
     }
